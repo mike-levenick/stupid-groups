@@ -13,6 +13,9 @@
 		F7EAD11021F6112B001F8492 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7EAD10E21F6112B001F8492 /* Main.storyboard */; };
 		F7EAD11C21F6112B001F8492 /* Stupid_GroupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD11B21F6112B001F8492 /* Stupid_GroupsTests.swift */; };
 		F7EAD12721F6112B001F8492 /* Stupid_GroupsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD12621F6112B001F8492 /* Stupid_GroupsUITests.swift */; };
+		F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13621F6351C001F8492 /* popPrompt.swift */; };
+		F7EAD13921F63703001F8492 /* loginWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13821F63703001F8492 /* loginWindow.swift */; };
+		F7EAD13B21F64BFD001F8492 /* xmlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,10 @@
 		F7EAD12221F6112B001F8492 /* Stupid GroupsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stupid GroupsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EAD12621F6112B001F8492 /* Stupid_GroupsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stupid_GroupsUITests.swift; sourceTree = "<group>"; };
 		F7EAD12821F6112B001F8492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7EAD13621F6351C001F8492 /* popPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popPrompt.swift; sourceTree = "<group>"; };
+		F7EAD13821F63703001F8492 /* loginWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginWindow.swift; sourceTree = "<group>"; };
+		F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xmlBuilder.swift; sourceTree = "<group>"; };
+		F7EAD13C21F64D28001F8492 /* Stupid Groups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stupid Groups.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,12 +103,16 @@
 		F7EAD10721F61129001F8492 /* Stupid Groups */ = {
 			isa = PBXGroup;
 			children = (
+				F7EAD13C21F64D28001F8492 /* Stupid Groups.entitlements */,
 				F7EAD10821F61129001F8492 /* AppDelegate.swift */,
 				F7EAD10A21F61129001F8492 /* ViewController.swift */,
 				F7EAD10C21F6112A001F8492 /* Assets.xcassets */,
 				F7EAD10E21F6112B001F8492 /* Main.storyboard */,
+				F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */,
 				F7EAD11121F6112B001F8492 /* Info.plist */,
 				F7EAD11221F6112B001F8492 /* Stupid_Groups.entitlements */,
+				F7EAD13621F6351C001F8492 /* popPrompt.swift */,
+				F7EAD13821F63703001F8492 /* loginWindow.swift */,
 			);
 			path = "Stupid Groups";
 			sourceTree = "<group>";
@@ -192,6 +203,11 @@
 				TargetAttributes = {
 					F7EAD10421F61129001F8492 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					F7EAD11621F6112B001F8492 = {
 						CreatedOnToolsVersion = 10.1;
@@ -255,7 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */,
+				F7EAD13921F63703001F8492 /* loginWindow.swift in Sources */,
+				F7EAD13B21F64BFD001F8492 /* xmlBuilder.swift in Sources */,
 				F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */,
+				F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid_Groups.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid Groups.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X6CF4FM9JH;
@@ -430,6 +449,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-Groups";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -440,7 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid_Groups.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid Groups.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X6CF4FM9JH;
@@ -449,6 +469,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-Groups";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
