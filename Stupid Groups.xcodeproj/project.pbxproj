@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10821F61129001F8492 /* AppDelegate.swift */; };
+		F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10A21F61129001F8492 /* ViewController.swift */; };
+		F7EAD10D21F6112A001F8492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EAD10C21F6112A001F8492 /* Assets.xcassets */; };
+		F7EAD11021F6112B001F8492 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7EAD10E21F6112B001F8492 /* Main.storyboard */; };
+		F7EAD11C21F6112B001F8492 /* Stupid_GroupsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD11B21F6112B001F8492 /* Stupid_GroupsTests.swift */; };
+		F7EAD12721F6112B001F8492 /* Stupid_GroupsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD12621F6112B001F8492 /* Stupid_GroupsUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F7EAD11821F6112B001F8492 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7EAD0FD21F61129001F8492 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7EAD10421F61129001F8492;
+			remoteInfo = "Stupid Groups";
+		};
+		F7EAD12321F6112B001F8492 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7EAD0FD21F61129001F8492 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7EAD10421F61129001F8492;
+			remoteInfo = "Stupid Groups";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F7EAD10521F61129001F8492 /* Stupid Groups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stupid Groups.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7EAD10821F61129001F8492 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F7EAD10A21F61129001F8492 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F7EAD10C21F6112A001F8492 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F7EAD10F21F6112B001F8492 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F7EAD11121F6112B001F8492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7EAD11221F6112B001F8492 /* Stupid_Groups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stupid_Groups.entitlements; sourceTree = "<group>"; };
+		F7EAD11721F6112B001F8492 /* Stupid GroupsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stupid GroupsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7EAD11B21F6112B001F8492 /* Stupid_GroupsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stupid_GroupsTests.swift; sourceTree = "<group>"; };
+		F7EAD11D21F6112B001F8492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7EAD12221F6112B001F8492 /* Stupid GroupsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stupid GroupsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7EAD12621F6112B001F8492 /* Stupid_GroupsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stupid_GroupsUITests.swift; sourceTree = "<group>"; };
+		F7EAD12821F6112B001F8492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7EAD10221F61129001F8492 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7EAD11421F6112B001F8492 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7EAD11F21F6112B001F8492 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F7EAD0FC21F61129001F8492 = {
+			isa = PBXGroup;
+			children = (
+				F7EAD10721F61129001F8492 /* Stupid Groups */,
+				F7EAD11A21F6112B001F8492 /* Stupid GroupsTests */,
+				F7EAD12521F6112B001F8492 /* Stupid GroupsUITests */,
+				F7EAD10621F61129001F8492 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F7EAD10621F61129001F8492 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7EAD10521F61129001F8492 /* Stupid Groups.app */,
+				F7EAD11721F6112B001F8492 /* Stupid GroupsTests.xctest */,
+				F7EAD12221F6112B001F8492 /* Stupid GroupsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7EAD10721F61129001F8492 /* Stupid Groups */ = {
+			isa = PBXGroup;
+			children = (
+				F7EAD10821F61129001F8492 /* AppDelegate.swift */,
+				F7EAD10A21F61129001F8492 /* ViewController.swift */,
+				F7EAD10C21F6112A001F8492 /* Assets.xcassets */,
+				F7EAD10E21F6112B001F8492 /* Main.storyboard */,
+				F7EAD11121F6112B001F8492 /* Info.plist */,
+				F7EAD11221F6112B001F8492 /* Stupid_Groups.entitlements */,
+			);
+			path = "Stupid Groups";
+			sourceTree = "<group>";
+		};
+		F7EAD11A21F6112B001F8492 /* Stupid GroupsTests */ = {
+			isa = PBXGroup;
+			children = (
+				F7EAD11B21F6112B001F8492 /* Stupid_GroupsTests.swift */,
+				F7EAD11D21F6112B001F8492 /* Info.plist */,
+			);
+			path = "Stupid GroupsTests";
+			sourceTree = "<group>";
+		};
+		F7EAD12521F6112B001F8492 /* Stupid GroupsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F7EAD12621F6112B001F8492 /* Stupid_GroupsUITests.swift */,
+				F7EAD12821F6112B001F8492 /* Info.plist */,
+			);
+			path = "Stupid GroupsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7EAD10421F61129001F8492 /* Stupid Groups */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7EAD12B21F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid Groups" */;
+			buildPhases = (
+				F7EAD10121F61129001F8492 /* Sources */,
+				F7EAD10221F61129001F8492 /* Frameworks */,
+				F7EAD10321F61129001F8492 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stupid Groups";
+			productName = "Stupid Groups";
+			productReference = F7EAD10521F61129001F8492 /* Stupid Groups.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F7EAD11621F6112B001F8492 /* Stupid GroupsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7EAD12E21F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid GroupsTests" */;
+			buildPhases = (
+				F7EAD11321F6112B001F8492 /* Sources */,
+				F7EAD11421F6112B001F8492 /* Frameworks */,
+				F7EAD11521F6112B001F8492 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7EAD11921F6112B001F8492 /* PBXTargetDependency */,
+			);
+			name = "Stupid GroupsTests";
+			productName = "Stupid GroupsTests";
+			productReference = F7EAD11721F6112B001F8492 /* Stupid GroupsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F7EAD12121F6112B001F8492 /* Stupid GroupsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7EAD13121F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid GroupsUITests" */;
+			buildPhases = (
+				F7EAD11E21F6112B001F8492 /* Sources */,
+				F7EAD11F21F6112B001F8492 /* Frameworks */,
+				F7EAD12021F6112B001F8492 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7EAD12421F6112B001F8492 /* PBXTargetDependency */,
+			);
+			name = "Stupid GroupsUITests";
+			productName = "Stupid GroupsUITests";
+			productReference = F7EAD12221F6112B001F8492 /* Stupid GroupsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7EAD0FD21F61129001F8492 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Michael Levenick";
+				TargetAttributes = {
+					F7EAD10421F61129001F8492 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					F7EAD11621F6112B001F8492 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = F7EAD10421F61129001F8492;
+					};
+					F7EAD12121F6112B001F8492 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = F7EAD10421F61129001F8492;
+					};
+				};
+			};
+			buildConfigurationList = F7EAD10021F61129001F8492 /* Build configuration list for PBXProject "Stupid Groups" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F7EAD0FC21F61129001F8492;
+			productRefGroup = F7EAD10621F61129001F8492 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7EAD10421F61129001F8492 /* Stupid Groups */,
+				F7EAD11621F6112B001F8492 /* Stupid GroupsTests */,
+				F7EAD12121F6112B001F8492 /* Stupid GroupsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7EAD10321F61129001F8492 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7EAD10D21F6112A001F8492 /* Assets.xcassets in Resources */,
+				F7EAD11021F6112B001F8492 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7EAD11521F6112B001F8492 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7EAD12021F6112B001F8492 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7EAD10121F61129001F8492 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */,
+				F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7EAD11321F6112B001F8492 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7EAD11C21F6112B001F8492 /* Stupid_GroupsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7EAD11E21F6112B001F8492 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7EAD12721F6112B001F8492 /* Stupid_GroupsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7EAD11921F6112B001F8492 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7EAD10421F61129001F8492 /* Stupid Groups */;
+			targetProxy = F7EAD11821F6112B001F8492 /* PBXContainerItemProxy */;
+		};
+		F7EAD12421F6112B001F8492 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7EAD10421F61129001F8492 /* Stupid Groups */;
+			targetProxy = F7EAD12321F6112B001F8492 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F7EAD10E21F6112B001F8492 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7EAD10F21F6112B001F8492 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F7EAD12921F6112B001F8492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F7EAD12A21F6112B001F8492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F7EAD12C21F6112B001F8492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid_Groups.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X6CF4FM9JH;
+				INFOPLIST_FILE = "Stupid Groups/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-Groups";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		F7EAD12D21F6112B001F8492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid_Groups.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X6CF4FM9JH;
+				INFOPLIST_FILE = "Stupid Groups/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-Groups";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		F7EAD12F21F6112B001F8492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X6CF4FM9JH;
+				INFOPLIST_FILE = "Stupid GroupsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-GroupsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stupid Groups.app/Contents/MacOS/Stupid Groups";
+			};
+			name = Debug;
+		};
+		F7EAD13021F6112B001F8492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X6CF4FM9JH;
+				INFOPLIST_FILE = "Stupid GroupsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-GroupsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stupid Groups.app/Contents/MacOS/Stupid Groups";
+			};
+			name = Release;
+		};
+		F7EAD13221F6112B001F8492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X6CF4FM9JH;
+				INFOPLIST_FILE = "Stupid GroupsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-GroupsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = "Stupid Groups";
+			};
+			name = Debug;
+		};
+		F7EAD13321F6112B001F8492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X6CF4FM9JH;
+				INFOPLIST_FILE = "Stupid GroupsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Levenick.Stupid-GroupsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = "Stupid Groups";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7EAD10021F61129001F8492 /* Build configuration list for PBXProject "Stupid Groups" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7EAD12921F6112B001F8492 /* Debug */,
+				F7EAD12A21F6112B001F8492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7EAD12B21F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid Groups" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7EAD12C21F6112B001F8492 /* Debug */,
+				F7EAD12D21F6112B001F8492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7EAD12E21F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid GroupsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7EAD12F21F6112B001F8492 /* Debug */,
+				F7EAD13021F6112B001F8492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7EAD13121F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid GroupsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7EAD13221F6112B001F8492 /* Debug */,
+				F7EAD13321F6112B001F8492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F7EAD0FD21F61129001F8492 /* Project object */;
+}
