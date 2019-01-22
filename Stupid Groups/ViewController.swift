@@ -30,7 +30,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             loginWindow.delegateAuth = self
         }
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +42,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         performSegue(withIdentifier: "segueLogin", sender: self)
     }
     
-
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -51,21 +49,20 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     }
 
     @IBAction func btnRun(_ sender: Any) {
+        // Determine whether we're converting to static group or advanced search
         if popConvertTo.titleOfSelectedItem == "Static Group" {
             print("Static")
         } else {
             print("Adavnced")
         }
-        
-        
+
+        // Gather data on the smart group to be converted
         DispatchQueue.main.async {
         let myURL = xmlBuilder().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
             let request = NSMutableURLRequest(url: myURL)
             request.httpMethod = "GET"
             let configuration = URLSessionConfiguration.default
-            // vvv FIX CREDENTIALS AFTER GETTING DELEGATE RESOLVED
-            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "text/xml"]
-            // ^^ FIX CREDENTIALS AFTER GETTING DELEGATE RESOLVED
+            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "application/json"]
             let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) -> Void in
@@ -74,6 +71,29 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         // GOOD RESPONSE from API
                         print(httpResponse.description)
                         print(String(decoding: data!, as: UTF8.self))
+                        
+                        do {
+                            // Build a variable of the JSON returned
+                            let smartGroupJSON = try JSON(data: data!)
+                            
+                            // Determine whether the returned group is a smart group
+                            let isSmart = smartGroupJSON["computer_group"]["is_smart"].boolValue
+                            if isSmart {
+                                print("YEP")
+                            }
+                            
+                            print(isSmart)
+                            print("Smart Group JSON")
+                            print("Smart Group JSON")
+                            print("Smart Group JSON")
+                            
+                            // Parse out the criteria
+                            print(smartGroupJSON["computer_group"]["criteria"].arrayValue)
+                            
+                        } catch {
+                            // Catching errors in converting the data received from the API to JSON format
+                            print("Error Caught Here")
+                        }
                         
                         
                     } else {
@@ -87,7 +107,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                     _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
                 }
             })
-            task.resume()
+            task.resume() // Kick off the actual GET here
         }
         
     }
