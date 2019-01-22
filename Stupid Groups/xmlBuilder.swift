@@ -31,13 +31,28 @@ public class xmlBuilder {
     }
     
     // Create the URL that is used to verify the credentials against reading activation code
-    public func createGETURL(url: String) -> URL {
+    public func createAuthURL(url: String) -> URL {
         let stringURL = "\(url)activationcode"
         let encodedURL = NSURL(string: stringURL)
         //print(urlwithPercentEscapes!) // Uncomment for debugging
         return encodedURL! as URL
     }
     
+    // Create the URL that is used to gather the information from an existing smart group
+    public func createGETURL(url: String, deviceType: String, id: String) -> URL {
+        var endpoint = "none"
+        if deviceType == "Mobile Device" {
+            endpoint = "mobilegroups"
+        } else if deviceType == "Computer" {
+            endpoint = "computergroups"
+        } else {
+            endpoint = "usergroups"
+        }
+        let stringURL = "\(url)\(endpoint)/id/\(id)"
+        let encodedURL = NSURL(string: stringURL)
+        //print(urlwithPercentEscapes!) // Uncomment for debugging
+        return encodedURL! as URL
+    }
     
     // MARK: - XML Creation based on dropdowns
     

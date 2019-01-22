@@ -120,7 +120,7 @@ class loginWindow: NSViewController, URLSessionDelegate {
             // MARK - Credential Verification API Call
             
             DispatchQueue.main.async {
-                let myURL = xmlBuilder().createGETURL(url: self.serverURL!)
+                let myURL = xmlBuilder().createAuthURL(url: self.serverURL!)
                 let request = NSMutableURLRequest(url: myURL)
                 request.httpMethod = "GET"
                 let configuration = URLSessionConfiguration.default
