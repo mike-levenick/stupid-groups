@@ -63,7 +63,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             request.httpMethod = "GET"
             let configuration = URLSessionConfiguration.default
             // vvv FIX CREDENTIALS AFTER GETTING DELEGATE RESOLVED
-            configuration.httpAdditionalHeaders = ["Authorization" : "Basic YXBpYWRtaW46amFtZjEyMzQ=", "Content-Type" : "text/xml", "Accept" : "text/xml"]
+            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "text/xml"]
             // ^^ FIX CREDENTIALS AFTER GETTING DELEGATE RESOLVED
             let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request as URLRequest, completionHandler: {

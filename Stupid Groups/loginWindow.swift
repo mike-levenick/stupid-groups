@@ -75,7 +75,6 @@ class loginWindow: NSViewController, URLSessionDelegate {
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
-        //self.dismiss(self)
         txtURLOutlet.stringValue = txtURLOutlet.stringValue.trimmingCharacters(in: CharacterSet.whitespaces)
         txtUserOutlet.stringValue = txtUserOutlet.stringValue.trimmingCharacters(in: CharacterSet.whitespaces)
         txtPassOutlet.stringValue = txtPassOutlet.stringValue.trimmingCharacters(in: CharacterSet.whitespaces)
