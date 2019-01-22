@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     
@@ -73,6 +74,8 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         // GOOD RESPONSE from API
                         print(httpResponse.description)
                         print(String(decoding: data!, as: UTF8.self))
+                        
+                        
                     } else {
                         // Bad Response from API
                         print(httpResponse.statusCode)
