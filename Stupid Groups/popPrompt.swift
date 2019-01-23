@@ -46,22 +46,4 @@ public class popPrompt {
         return myPopup.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn
     }
     
-    // Browse for a CSV File
-    public func browseForCSV() -> String {
-        let openPanel = NSOpenPanel()
-        openPanel.allowsMultipleSelection = false
-        openPanel.canChooseDirectories = false
-        openPanel.canCreateDirectories = false
-        openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = ["csv"]
-        openPanel.begin { (result) in
-            if result.rawValue == NSFileHandlingPanelOKButton {
-                //print(openPanel.URL!) //uncomment for debugging
-                let globalPathToCSV = openPanel.url! as NSURL!
-                //print(self.globalPathToCSV.path!) //uncomment for debugging
-                self.globalCSVString = globalPathToCSV?.path!
-            }
-        }
-        return globalCSVString
-    }
 }

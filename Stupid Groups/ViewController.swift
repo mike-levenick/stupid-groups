@@ -15,6 +15,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     // Declare Variables
     var globalServerURL: String!
     var globalServerCredentials: String!
+    var globalJSONtoPOST: JSON!
     var base64Credentials: String!
     var serverURL: String!
     var verified = false
@@ -83,14 +84,20 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                             let criteria = smartGroupJSON["computer_group"]["criteria"].arrayValue
                             let membership = smartGroupJSON["computer_group"]["computers"].arrayValue
                             let siteID = smartGroupJSON["computer_group"]["site"]["id"].intValue
-                            let name = smartGroupJSON["computer_group"]["name"].stringValue
-                            
+                            let smartName = smartGroupJSON["computer_group"]["name"].stringValue
+                            let newName = "SG - \(smartName)"
                             print("Is smart \(isSmart)")
                             print("Criteria \(criteria)")
                             print("Membership \(membership)")
                             print("Site ID \(siteID)")
-                            print("Name \(name)")
+                            print("Name \(smartName)")
                             
+                            //var advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria, "site": ["id": siteID], "display_fields": ["name": "Asset Tag","name": "Computer Name","name": "JSS Computer ID","name": "Serial Number","name": "Username"]]]
+                            let advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria, "site": ["id": siteID], "display_fields": [["name":"Asset Tag"],["name":"Computer Name"],["name":"JSS Computer ID"],["name":"Serial Number"],["name":"Username"]]]]
+                            
+                            self.globalJSONtoPOST = advancedJSON
+                            print("TO UPLOAD")
+                            print (self.globalJSONtoPOST)
                             
                         } catch {
                             // Catching errors in converting the data received from the API to JSON format
@@ -138,6 +145,8 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         }
         
     }
+    
+    
 
     func userDidAuthenticate(base64Credentials: String, url: String) {
         //print(base64Credentials)
