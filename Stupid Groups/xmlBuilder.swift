@@ -54,6 +54,13 @@ public class xmlBuilder {
         return encodedURL! as URL
     }
     
+    public func createPOSTURL(url: String) -> URL {
+        let stringURL = "\(url)advancedcomputersearches/id/0"
+        let encodedURL = NSURL(string: stringURL)
+        //print(urlwithPercentEscapes!) // Uncomment for debugging
+        return encodedURL! as URL
+    }
+    
     // MARK: - XML Creation based on dropdowns
     
     /* ===

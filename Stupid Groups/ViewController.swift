@@ -19,6 +19,12 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     var base64Credentials: String!
     var serverURL: String!
     var verified = false
+    var globalHTTPFunction: String!
+    var myURL: URL!
+    var globalDebug = "off"
+    
+    // Set up operation queue for runs
+    let myOpQueue = OperationQueue()
     
     // Set up outlets
     @IBOutlet weak var lblResults: NSTextField!
@@ -50,7 +56,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         }
     }
 
-    @IBAction func btnRun(_ sender: Any) {
+    @IBAction func btnGET(_ sender: Any) {
         // Determine whether we're converting to static group or advanced search
         if popConvertTo.titleOfSelectedItem == "Static Group" {
             print("Static")
@@ -64,7 +70,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             let request = NSMutableURLRequest(url: myURL)
             request.httpMethod = "GET"
             let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "application/json"]
+            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "application/json", "Accept" : "application/json"]
             let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) -> Void in
@@ -93,7 +99,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                             print("Name \(smartName)")
                             
                             //var advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria, "site": ["id": siteID], "display_fields": ["name": "Asset Tag","name": "Computer Name","name": "JSS Computer ID","name": "Serial Number","name": "Username"]]]
-                            let advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria, "site": ["id": siteID], "display_fields": [["name":"Asset Tag"],["name":"Computer Name"],["name":"JSS Computer ID"],["name":"Serial Number"],["name":"Username"]]]]
+                            let advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria,"view_as" : "Standard Web Page", "site": ["id": siteID], "display_fields": [["name":"Asset Tag"],["name":"Computer Name"],["name":"JSS Computer ID"],["name":"Serial Number"],["name":"Username"]]]]
                             
                             self.globalJSONtoPOST = advancedJSON
                             print("TO UPLOAD")
@@ -146,6 +152,104 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         
     }
     
+    @IBAction func btnPOST(_ sender: Any) {
+        
+
+            
+            // Async update the UI for the start of the run
+            DispatchQueue.main.async {
+                self.beginRunView()
+            }
+            
+            // Set the max concurrent ops to the selectable number
+            myOpQueue.maxConcurrentOperationCount = 1
+            
+            // Semaphore causes the op queue to wait for responses before sending a new request
+            let semaphore = DispatchSemaphore(value: 0)
+
+                // Add a PUT or POST request to the operation queue
+                myOpQueue.addOperation {
+                    
+                    self.myURL = xmlBuilder().createPOSTURL(url: self.globalServerURL!)
+                    
+                    let request = NSMutableURLRequest(url: self.myURL)
+                    request.httpMethod = "POST"
+                    do {
+                        request.httpBody = try self.globalJSONtoPOST!.rawData()
+                    } catch {
+                        //errors caught here
+                    }
+                    
+                    let configuration = URLSessionConfiguration.default
+                    configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(self.globalServerCredentials!)", "Content-Type" : "application/json", "Accept" : "application/json"]
+                    let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
+                    let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                        (data, response, error) -> Void in
+                        
+                        // If debug mode is enabled, print out the full data from the curl
+                        /*if let myData = String(data: data!, encoding: .utf8) {
+                            if self.globalDebug == "on" {
+                                // DO STUFF HERE IF DEBUG IS ON
+                            }
+                        }*/
+                        
+                        // If we got a response
+                        if let httpResponse = response as? HTTPURLResponse {
+                            
+                            // If that response is a success response
+                            if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299 {
+                                DispatchQueue.main.async {
+                                    // GOOD RESPONSE GOES HERE
+                                    print(httpResponse.statusCode)
+                                    
+                                }
+                            } else {
+                                // If that response is not a success response
+                                DispatchQueue.main.async {
+                                    // BAD RESPONSE GOES HERE
+                                    print(httpResponse.statusCode)
+                                    print(httpResponse.debugDescription)
+                                    if let myData = String(data: data!, encoding: .utf8) {
+                                        print(myData)
+                                    }
+                                    do {
+                                        if let postData = try String(data: self.globalJSONtoPOST!.rawData(), encoding: .utf8) {
+                                            print(postData)
+                                        }
+                                    } catch {
+                                        
+                                    }
+                                    
+                                }
+                                    if httpResponse.statusCode == 409 {
+                                    // 409 SPECIFIC STUFF GOES HERE
+                                    }
+                                    // Update the progress bar
+                                }
+                            
+                            // Signal that the response was received
+                            semaphore.signal()
+                            DispatchQueue.main.async {
+                                // ASYNC UPDATES TO THE GUI GO HERE
+
+                            }
+                        }
+                        // Log errors if received (we probably shouldn't ever end up needing this)
+                        if error != nil {
+                            _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error while uploading. \n\n \(error!.localizedDescription)")
+                        }
+                    })
+                    // Send the request and then wait for the semaphore signal
+                    task.resume()
+                    semaphore.wait()
+                    
+                    // If we're on the last row sent, update the UI to reset for another run
+                    DispatchQueue.main.async {
+                        self.resetView()
+                    }
+                }
+    
+    }
     
 
     func userDidAuthenticate(base64Credentials: String, url: String) {
@@ -161,6 +265,12 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(Foundation.URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }
+    func resetView() {
+        print("VIEW RESET")
+    }
     
+    func beginRunView() {
+        print("SET RUN VIEW")
+    }
 }
 

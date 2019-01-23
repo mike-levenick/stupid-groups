@@ -721,7 +721,7 @@ DQ
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="btnRun:" target="XfG-lQ-9wD" id="E6L-fR-BRb"/>
+                                    <action selector="btnGET:" target="XfG-lQ-9wD" id="lw8-dy-Cb6"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-S0-mfJ">
@@ -787,6 +787,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="btnPOST:" target="XfG-lQ-9wD" id="M7L-1V-sKE"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
