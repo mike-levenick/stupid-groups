@@ -791,6 +791,17 @@ DQ
                                     <action selector="btnPOST:" target="XfG-lQ-9wD" id="M7L-1V-sKE"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dlr-uH-GrU">
+                                <rect key="frame" x="240" y="13" width="102" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Code Test" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SAf-vb-kQ8">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="codeTest:" target="XfG-lQ-9wD" id="AQk-M6-bjL"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>

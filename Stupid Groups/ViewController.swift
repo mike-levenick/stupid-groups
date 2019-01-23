@@ -66,11 +66,11 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
 
         // Gather data on the smart group to be converted
         DispatchQueue.main.async {
-        let myURL = xmlBuilder().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
+            let myURL = xmlBuilder().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
             let request = NSMutableURLRequest(url: myURL)
             request.httpMethod = "GET"
             let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "application/json", "Accept" : "application/json"]
+            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "text/xml"]
             let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) -> Void in
@@ -79,7 +79,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         // GOOD RESPONSE from API
                         //print(httpResponse.description)
                         //print(String(decoding: data!, as: UTF8.self))
-                        
+                        /*
                         do {
                             // Build a variable of the JSON returned
                             let smartGroupJSON = try JSON(data: data!)
@@ -108,32 +108,36 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         } catch {
                             // Catching errors in converting the data received from the API to JSON format
                             print("Error Caught Here")
-                        }
-                        /*
-                        do {
-                            // Build a variable of the JSON returned
-                            let smartGroupXML = try XML.parse(data!)
-                            
-                            // Determine whether the returned group is a smart group
-                            if let isSmart = smartGroupXML["computer_group", "is_smart"].text {
-                                print("Is smart \(isSmart)")
-                            }
-                            let criteria = smartGroupXML.computer_group.criteria
-                            print(criteria)
-                            
-                            
-                            //print("Is smart \(isSmart)")
-                            //print("Criteria \(criteria)")
-                            //print("Membership \(membership)")
-                            //print("Site ID \(siteID)")
-                            //print("Name \(name)")
-                            
-                            
-                            
-                        } catch {
-                            // Catching errors in converting the data received from the API to JSON format
-                            print("Error Caught Here")
                         }*/
+                    
+                    
+                        // Build a variable of the XML returned
+                        let smartGroupXML = XML.parse(data!)
+                        
+                        // Determine whether the returned group is a smart group
+                        let isSmart = smartGroupXML.computer_group.is_smart.text
+                        print("Is smart \(String(describing: isSmart!))")
+                        
+                        let oldName = smartGroupXML["computer_group"]["name"].text
+                        print("Old Name is \(String(describing: oldName!))")
+                        let newName = "SG - \(String(describing: oldName!))"
+                        print("New Name is \(newName)")
+                        
+                        let criteria = smartGroupXML["computer_group"]["criteria"]
+                        print(criteria)
+                        
+                        
+                        
+                        
+                        //print("Is smart \(isSmart)")
+                        //print("Criteria \(criteria)")
+                        //print("Membership \(membership)")
+                        //print("Site ID \(siteID)")
+                        //print("Name \(name)")
+                        
+                        
+                        
+                        
                         
                         
                     } else {
@@ -272,5 +276,25 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     func beginRunView() {
         print("SET RUN VIEW")
     }
+    @IBAction func codeTest(_ sender: Any) {
+    }
+    
 }
 
+/* LESLIE CODE TO PARSE XML SWITCH TO THIS:
+ Usage: stuffBetweenTags = tagValue(fullXML, starttag, endttag)
+ 
+ // extract the value between (different) tags - start
+ func tagValue2(xmlString:String, startTag:String, endTag:String) -> String {
+ var rawValue = ""
+ if let start = xmlString.range(of: startTag),
+ let end  = xmlString.range(of: endTag, range: start.upperBound..<xmlString.endIndex) {
+ rawValue.append(String(xmlString[start.upperBound..<end.lowerBound]))
+ } else {
+ if self.debug { self.writeToLog(stringOfText: "[tagValue2] Start, \(startTag), and end, \(endTag), not found.\n") }
+ }
+ return rawValue
+ }
+ //  extract the value between (different) tags - end
+ 
+ */
