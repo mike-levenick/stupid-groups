@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41AC994C82B3E3FF3C69ED1BD01063DA"
+               BlueprintIdentifier = "3AACDF5CB16F65E28742838D8253CF37"
                BuildableName = "Pods_Stupid_Groups.framework"
                BlueprintName = "Pods-Stupid Groups"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AC994C82B3E3FF3C69ED1BD01063DA"
+            BlueprintIdentifier = "3AACDF5CB16F65E28742838D8253CF37"
             BuildableName = "Pods_Stupid_Groups.framework"
             BlueprintName = "Pods-Stupid Groups"
             ReferencedContainer = "container:Pods.xcodeproj">

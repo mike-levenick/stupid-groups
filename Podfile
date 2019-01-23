@@ -7,6 +7,7 @@ target 'Stupid Groups' do
 
   # Pods for Stupid Groups
     pod 'SwiftyJSON', '~> 4.0'
+    pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
   target 'Stupid GroupsTests' do
     inherit! :search_paths
     # Pods for testing

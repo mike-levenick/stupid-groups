@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftyJSON
+import SwiftyXMLParser
 
 class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     
@@ -69,31 +70,57 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
                         // GOOD RESPONSE from API
-                        print(httpResponse.description)
-                        print(String(decoding: data!, as: UTF8.self))
+                        //print(httpResponse.description)
+                        //print(String(decoding: data!, as: UTF8.self))
                         
                         do {
                             // Build a variable of the JSON returned
                             let smartGroupJSON = try JSON(data: data!)
+                            print(smartGroupJSON)
                             
                             // Determine whether the returned group is a smart group
                             let isSmart = smartGroupJSON["computer_group"]["is_smart"].boolValue
-                            if isSmart {
-                                print("YEP")
-                            }
+                            let criteria = smartGroupJSON["computer_group"]["criteria"].arrayValue
+                            let membership = smartGroupJSON["computer_group"]["computers"].arrayValue
+                            let siteID = smartGroupJSON["computer_group"]["site"]["id"].intValue
+                            let name = smartGroupJSON["computer_group"]["name"].stringValue
                             
-                            print(isSmart)
-                            print("Smart Group JSON")
-                            print("Smart Group JSON")
-                            print("Smart Group JSON")
+                            print("Is smart \(isSmart)")
+                            print("Criteria \(criteria)")
+                            print("Membership \(membership)")
+                            print("Site ID \(siteID)")
+                            print("Name \(name)")
                             
-                            // Parse out the criteria
-                            print(smartGroupJSON["computer_group"]["criteria"].arrayValue)
                             
                         } catch {
                             // Catching errors in converting the data received from the API to JSON format
                             print("Error Caught Here")
                         }
+                        /*
+                        do {
+                            // Build a variable of the JSON returned
+                            let smartGroupXML = try XML.parse(data!)
+                            
+                            // Determine whether the returned group is a smart group
+                            if let isSmart = smartGroupXML["computer_group", "is_smart"].text {
+                                print("Is smart \(isSmart)")
+                            }
+                            let criteria = smartGroupXML.computer_group.criteria
+                            print(criteria)
+                            
+                            
+                            //print("Is smart \(isSmart)")
+                            //print("Criteria \(criteria)")
+                            //print("Membership \(membership)")
+                            //print("Site ID \(siteID)")
+                            //print("Name \(name)")
+                            
+                            
+                            
+                        } catch {
+                            // Catching errors in converting the data received from the API to JSON format
+                            print("Error Caught Here")
+                        }*/
                         
                         
                     } else {
