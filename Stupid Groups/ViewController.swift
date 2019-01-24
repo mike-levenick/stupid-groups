@@ -19,6 +19,11 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     var globalHTTPFunction: String!
     var myURL: URL!
     var globalDebug = "off"
+    var smartGroupCriteria: String!
+    var smartGroupName: String!
+    var newName: String!
+    var siteID: String!
+    var smartGroupMembership: String!
     
     // Set up operation queue for runs
     let myOpQueue = OperationQueue()
@@ -53,13 +58,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     }
 
     @IBAction func btnGET(_ sender: Any) {
-        // Determine whether we're converting to static group or advanced search
-        if popConvertTo.titleOfSelectedItem == "Static Group" {
-            print("Static")
-        } else {
-            print("Adavnced")
-        }
-
         // Gather data on the smart group to be converted
         DispatchQueue.main.async {
             let myURL = prepareData().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
@@ -73,19 +71,13 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
                         // GOOD RESPONSE from API
-                        //print(httpResponse.description)
-                        //print(String(decoding: data!, as: UTF8.self))
                         let smartGroupXML = String(decoding: data!, as: UTF8.self)
-                        let criteria = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
-                        print("CRITERIA HERE")
-                        print(criteria)
-                        
-                        //print("Is smart \(isSmart)")
-                        //print("Criteria \(criteria)")
-                        //print("Membership \(membership)")
-                        //print("Site ID \(siteID)")
-                        //print("Name \(name)")
-                        
+                        print(smartGroupXML)
+                        self.smartGroupCriteria = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
+                        self.smartGroupName = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "name>", endTag: "</name")
+                        self.newName = "SG Converted - \(String(describing: self.smartGroupName))"
+                        self.siteID = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "site>", endTag: "</site")
+                        self.smartGroupMembership = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "computers>", endTag: "</computers")
                     } else {
                         // Bad Response from API
                         print(httpResponse.statusCode)
@@ -94,7 +86,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                 }
 
                 if error != nil {
-                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
+                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "Stupid Groups received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
                 }
             })
             task.resume() // Kick off the actual GET here
@@ -120,7 +112,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         // Add a PUT or POST request to the operation queue
         myOpQueue.addOperation {
 
-            self.myURL = xmlBuilder().createPOSTURL(url: self.globalServerURL!)
+            self.myURL = prepareData().createPOSTURL(url: self.globalServerURL!)
 
             let request = NSMutableURLRequest(url: self.myURL)
             request.httpMethod = "POST"
