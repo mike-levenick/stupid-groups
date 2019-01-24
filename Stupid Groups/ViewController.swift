@@ -58,6 +58,9 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     }
 
     @IBAction func btnGET(_ sender: Any) {
+        // Set variables based on the record type for the smart group
+        
+
         // Gather data on the smart group to be converted
         DispatchQueue.main.async {
             let myURL = prepareData().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)

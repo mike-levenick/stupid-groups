@@ -12,15 +12,20 @@ import Foundation
 public class prepareData {
     // Globally declaring the xml variable to allow the various functions to populate it
     var xml: XMLDocument?
+
+    public func xmlROOT(deviceType: String) -> String {
+        var root = "none"
+        if deviceType == "Mobile Device" {
+            root = "mobile_device_group"
+        } else if deviceType == "Computer" {
+            endpoint = "computer_group"
+        } else {
+            endpoint = "user_group"
+        }
+    }
     
-    // MARK: - URL Creation based on dropdowns
-    
-    /* ===
-     These various functions are called when the HTTP Requests are made, based on the dropdown values selected
-     I used to have these all in one big function and split them out through if/then statements here, but
-     it became rather difficult to add new functionality such as the static group population.
-     === */
-    
+
+
     // Create the URL for generic updates, such as asset tag and username
     public func createPUTURL(url: String, endpoint: String, idType: String, columnA: String) -> URL {
         let stringURL = "\(url)\(endpoint)/\(idType)/\(columnA)"
@@ -62,17 +67,6 @@ public class prepareData {
     }
     
     // MARK: - XML Creation based on dropdowns
-    
-    /* ===
-     This section will first use an anonymous hash/tuple to "translate" the human readable dropdowns into
-     a more computer readable format.
-     
-     The values here typically directly translate into what the XML expects to see on a PUT or POST
-     however some are simply identifiable placeholders. The logic statements below help to determine which XML format
-     should be built and used for the upload, depending on what is being done. The various methods of building the xml
-     are mostly due to how different various JSS API endpoints behave, and how the xml format differs between them.
-     For example, sites are under the general subset, in a site sub-subset for ios and mac, but simply in the sites subset for users
-     === */
     
     public func createXML(popIdentifier: String, popDevice: String, popAttribute: String, eaID: String, columnB: String, columnA: String) -> Data {
         var returnedXML: Data?
