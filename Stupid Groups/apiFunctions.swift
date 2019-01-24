@@ -50,7 +50,7 @@ public class API {
         print("start get function")
         let request = NSMutableURLRequest(url: postURL)
         request.httpMethod = "POST"
-        //request.httpBody = xmlToPost
+        request.httpBody = postBody
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(postCredentials)", "Content-Type" : "text/xml", "Accept" : "text/xml"]
         let session = Foundation.URLSession(configuration: configuration)

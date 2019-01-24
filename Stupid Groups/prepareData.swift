@@ -14,14 +14,34 @@ public class prepareData {
     var xml: XMLDocument?
 
     // Returns an array
-    public func deviceData(deviceType: String) -> Array<String> {
+    public func deviceData(deviceType: String, conversionType: String) -> Array<String> {
         var xmlData = ["nil","nil","nil"]
+        
+        // Mobile Device
         if deviceType == "Mobile Device" {
-            xmlData = ["mobile_device_group","mobile_devices","mobile_device"]
+            if conversionType == "Advanced Search" {
+                xmlData = ["advanced_mobile_device_search","mobile_devices","mobile_device","advancedmobiledevicesearches"]
+            }
+            if conversionType == "Static Group" {
+                xmlData = ["mobile_device_group","mobile_devices","mobile_device","mobiledevicegroups"]
+            }
+            
+        // Computers
         } else if deviceType == "Computer" {
-            xmlData = ["computer_group","computers","computer"]
+            if conversionType == "Advanced Search" {
+                xmlData = ["advanced_computer_search","computers","computer","advancedcomputersearches"]
+            }
+            if conversionType == "Static Group" {
+                xmlData = ["computer_group","computers","computer","computergroups"]
+            }
+        // Users
         } else {
-            xmlData = ["user_group","users","user"]
+            if conversionType == "Advanced Search" {
+                xmlData = ["advanced_computer_search","computers","computer","advancedcomputersearches"]
+            }
+            if conversionType == "Static Group" {
+                xmlData = ["computer_group","computers","computer","computergroups"]
+            }
         }
         return xmlData
     }
@@ -29,14 +49,85 @@ public class prepareData {
     public func xmlToPost(newName: String, siteID: String, criteria: String, membership: String, conversionType: String, deviceRoot: String, devicePlural: String, deviceSingular: String) -> Data {
         
         var newXMLString = "nil"
+        var displayFields = "nil"
+        
+        if devicePlural == "users" {
+            displayFields = """
+            <size>7</size>
+            <display_field>
+            <name>Computers</name>
+            </display_field>
+            <display_field>
+            <name>Email Address</name>
+            </display_field>
+            <display_field>
+            <name>Full Name</name>
+            </display_field>
+            <display_field>
+            <name>Mobile Devices</name>
+            </display_field>
+            <display_field>
+            <name>Phone Number</name>
+            </display_field>
+            <display_field>
+            <name>Position</name>
+            </display_field>
+            <display_field>
+            <name>Username</name>
+            </display_field>
+            """
+        }
+        
+        if devicePlural == "mobile_devices" {
+            displayFields = """
+            <size>5</size>
+            <display_field>
+            <name>Asset Tag</name>
+            </display_field>
+            <display_field>
+            <name>Device ID</name>
+            </display_field>
+            <display_field>
+            <name>Display Name</name>
+            </display_field>
+            <display_field>
+            <name>Serial Number</name>
+            </display_field>
+            <display_field>
+            <name>Username</name>
+            </display_field>
+            """
+        }
+        
+        if devicePlural == "computers" {
+            displayFields = """
+            <size>5</size>
+            <display_field>
+            <name>Asset Tag</name>
+            </display_field>
+            <display_field>
+            <name>Computer Name</name>
+            </display_field>
+            <display_field>
+            <name>JSS Computer ID</name>
+            </display_field>
+            <display_field>
+            <name>Serial Number</name>
+            </display_field>
+            <display_field>
+            <name>Username</name>
+            </display_field>
+            """
+        }
         
         // Build XML for an Advanced Search conversion
         if conversionType == "Advanced Search" {
             newXMLString = """
             <\(deviceRoot)>
                 <name>\(newName)</name>
-                <site><id>\(siteID)</id></site>
+                <site>\(siteID)</site>
                 <criteria>\(criteria)</criteria>
+                <display_fields>\(displayFields)</display_fields>
             </\(deviceRoot)>
             """
             print(newXMLString)
@@ -48,6 +139,7 @@ public class prepareData {
             <\(deviceRoot)>
                 <name>\(newName)</name>
                 <site>\(siteID)</site>
+                <is_smart>false</is_smart>
                 <\(devicePlural)>\(membership)</\(devicePlural)>
             </\(deviceRoot)>
             """
@@ -92,7 +184,7 @@ public class prepareData {
     public func createGETURL(url: String, deviceType: String, id: String) -> URL {
         var endpoint = "none"
         if deviceType == "Mobile Device" {
-            endpoint = "mobilegroups"
+            endpoint = "mobiledevicegroups"
         } else if deviceType == "Computer" {
             endpoint = "computergroups"
         } else {
@@ -104,8 +196,8 @@ public class prepareData {
         return encodedURL! as URL
     }
     
-    public func createPOSTURL(url: String) -> URL {
-        let stringURL = "\(url)advancedcomputersearches/id/0"
+    public func createPOSTURL(url: String, endpoint: String) -> URL {
+        let stringURL = "\(url)\(endpoint)/id/0"
         let encodedURL = NSURL(string: stringURL)
         //print(urlwithPercentEscapes!) // Uncomment for debugging
         return encodedURL! as URL
