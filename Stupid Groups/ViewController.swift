@@ -79,55 +79,10 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         // GOOD RESPONSE from API
                         //print(httpResponse.description)
                         //print(String(decoding: data!, as: UTF8.self))
-                        /*
-                        do {
-                            // Build a variable of the JSON returned
-                            let smartGroupJSON = try JSON(data: data!)
-                            print(smartGroupJSON)
-                            
-                            // Determine whether the returned group is a smart group
-                            let isSmart = smartGroupJSON["computer_group"]["is_smart"].boolValue
-                            let criteria = smartGroupJSON["computer_group"]["criteria"].arrayValue
-                            let membership = smartGroupJSON["computer_group"]["computers"].arrayValue
-                            let siteID = smartGroupJSON["computer_group"]["site"]["id"].intValue
-                            let smartName = smartGroupJSON["computer_group"]["name"].stringValue
-                            let newName = "SG - \(smartName)"
-                            print("Is smart \(isSmart)")
-                            print("Criteria \(criteria)")
-                            print("Membership \(membership)")
-                            print("Site ID \(siteID)")
-                            print("Name \(smartName)")
-                            
-                            //var advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria, "site": ["id": siteID], "display_fields": ["name": "Asset Tag","name": "Computer Name","name": "JSS Computer ID","name": "Serial Number","name": "Username"]]]
-                            let advancedJSON: JSON =  ["advanced_computer_search": ["name": newName,  "criteria": criteria,"view_as" : "Standard Web Page", "site": ["id": siteID], "display_fields": [["name":"Asset Tag"],["name":"Computer Name"],["name":"JSS Computer ID"],["name":"Serial Number"],["name":"Username"]]]]
-                            
-                            self.globalJSONtoPOST = advancedJSON
-                            print("TO UPLOAD")
-                            print (self.globalJSONtoPOST)
-                            
-                        } catch {
-                            // Catching errors in converting the data received from the API to JSON format
-                            print("Error Caught Here")
-                        }*/
-                    
-                    
-                        // Build a variable of the XML returned
-                        let smartGroupXML = XML.parse(data!)
-                        
-                        // Determine whether the returned group is a smart group
-                        let isSmart = smartGroupXML.computer_group.is_smart.text
-                        print("Is smart \(String(describing: isSmart!))")
-                        
-                        let oldName = smartGroupXML["computer_group"]["name"].text
-                        print("Old Name is \(String(describing: oldName!))")
-                        let newName = "SG - \(String(describing: oldName!))"
-                        print("New Name is \(newName)")
-                        
-                        let criteria = smartGroupXML["computer_group"]["criteria"]
+                        let smartGroupXML = String(decoding: data!, as: UTF8.self)
+                        let criteria = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
+                        print("CRITERIA HERE")
                         print(criteria)
-                        
-                        
-                        
                         
                         //print("Is smart \(isSmart)")
                         //print("Criteria \(criteria)")
@@ -280,21 +235,3 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     }
     
 }
-
-/* LESLIE CODE TO PARSE XML SWITCH TO THIS:
- Usage: stuffBetweenTags = tagValue(fullXML, starttag, endttag)
- 
- // extract the value between (different) tags - start
- func tagValue2(xmlString:String, startTag:String, endTag:String) -> String {
- var rawValue = ""
- if let start = xmlString.range(of: startTag),
- let end  = xmlString.range(of: endTag, range: start.upperBound..<xmlString.endIndex) {
- rawValue.append(String(xmlString[start.upperBound..<end.lowerBound]))
- } else {
- if self.debug { self.writeToLog(stringOfText: "[tagValue2] Start, \(startTag), and end, \(endTag), not found.\n") }
- }
- return rawValue
- }
- //  extract the value between (different) tags - end
- 
- */

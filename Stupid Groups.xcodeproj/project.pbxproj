@@ -11,6 +11,7 @@
 		77DE895697EEFD616ECF999E /* Pods_Stupid_GroupsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5349757A7562B224359F2D /* Pods_Stupid_GroupsTests.framework */; };
 		CC37B7856D2607FB3F7E75AD /* Pods_Stupid_Groups.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2812CD671E49D51FBF7F25B /* Pods_Stupid_Groups.framework */; };
 		F72D65F921F7AE0B0063255E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72D65F821F7AE0B0063255E /* SwiftyJSON.framework */; };
+		F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A958521F96FE20097DA99 /* xmlParse.swift */; };
 		F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10821F61129001F8492 /* AppDelegate.swift */; };
 		F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10A21F61129001F8492 /* ViewController.swift */; };
 		F7EAD10D21F6112A001F8492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EAD10C21F6112A001F8492 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		F26C380F9F9569A8FA108738 /* Pods-Stupid GroupsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid GroupsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid GroupsTests/Pods-Stupid GroupsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F2812CD671E49D51FBF7F25B /* Pods_Stupid_Groups.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stupid_Groups.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72D65F821F7AE0B0063255E /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75A958521F96FE20097DA99 /* xmlParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xmlParse.swift; sourceTree = "<group>"; };
 		F7EAD10521F61129001F8492 /* Stupid Groups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stupid Groups.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EAD10821F61129001F8492 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7EAD10A21F61129001F8492 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				F7EAD10C21F6112A001F8492 /* Assets.xcassets */,
 				F7EAD10E21F6112B001F8492 /* Main.storyboard */,
 				F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */,
+				F75A958521F96FE20097DA99 /* xmlParse.swift */,
 				F7EAD11121F6112B001F8492 /* Info.plist */,
 				F7EAD11221F6112B001F8492 /* Stupid_Groups.entitlements */,
 				F7EAD13621F6351C001F8492 /* popPrompt.swift */,
@@ -416,6 +419,7 @@
 				F7EAD13B21F64BFD001F8492 /* xmlBuilder.swift in Sources */,
 				F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */,
 				F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */,
+				F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
