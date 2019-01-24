@@ -13,16 +13,16 @@ public class prepareData {
     // Globally declaring the xml variable to allow the various functions to populate it
     var xml: XMLDocument?
 
-    public func xmlROOT(deviceType: String) -> String {
-        var xmlRoot = "none"
+    public func deviceData(deviceType: String) -> Array<String> {
+        var xmlData = ["nil","nil","nil"]
         if deviceType == "Mobile Device" {
-            xmlRoot = "mobile_device_group"
+            xmlData = ["mobile_device_group","mobile_devices","mobile_device"]
         } else if deviceType == "Computer" {
-            xmlRoot = "computer_group"
+            xmlData = ["computer_group","computers","computer"]
         } else {
-            xmlRoot = "user_group"
+            xmlData = ["user_group","users","user"]
         }
-        return xmlRoot
+        return xmlData
     }
     
     func parseXML(fullXMLString:String, startTag:String, endTag:String) -> String {
