@@ -16,7 +16,7 @@
 		F7EAD12721F6112B001F8492 /* Stupid_GroupsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD12621F6112B001F8492 /* Stupid_GroupsUITests.swift */; };
 		F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13621F6351C001F8492 /* popPrompt.swift */; };
 		F7EAD13921F63703001F8492 /* loginWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13821F63703001F8492 /* loginWindow.swift */; };
-		F7EAD13B21F64BFD001F8492 /* xmlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */; };
+		F7EAD13B21F64BFD001F8492 /* prepareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD13A21F64BFD001F8492 /* prepareData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,7 @@
 		F7EAD12821F6112B001F8492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7EAD13621F6351C001F8492 /* popPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popPrompt.swift; sourceTree = "<group>"; };
 		F7EAD13821F63703001F8492 /* loginWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginWindow.swift; sourceTree = "<group>"; };
-		F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xmlBuilder.swift; sourceTree = "<group>"; };
+		F7EAD13A21F64BFD001F8492 /* prepareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prepareData.swift; sourceTree = "<group>"; };
 		F7EAD13C21F64D28001F8492 /* Stupid Groups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Stupid Groups.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,7 +118,7 @@
 				F7EAD10A21F61129001F8492 /* ViewController.swift */,
 				F7EAD10C21F6112A001F8492 /* Assets.xcassets */,
 				F7EAD10E21F6112B001F8492 /* Main.storyboard */,
-				F7EAD13A21F64BFD001F8492 /* xmlBuilder.swift */,
+				F7EAD13A21F64BFD001F8492 /* prepareData.swift */,
 				F75A958521F96FE20097DA99 /* xmlParse.swift */,
 				F7EAD11121F6112B001F8492 /* Info.plist */,
 				F7EAD11221F6112B001F8492 /* Stupid_Groups.entitlements */,
@@ -283,7 +283,7 @@
 			files = (
 				F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */,
 				F7EAD13921F63703001F8492 /* loginWindow.swift in Sources */,
-				F7EAD13B21F64BFD001F8492 /* xmlBuilder.swift in Sources */,
+				F7EAD13B21F64BFD001F8492 /* prepareData.swift in Sources */,
 				F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */,
 				F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */,
 				F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */,

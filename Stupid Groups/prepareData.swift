@@ -9,7 +9,7 @@
 import Cocoa
 import Foundation
 
-public class xmlBuilder {
+public class prepareData {
     // Globally declaring the xml variable to allow the various functions to populate it
     var xml: XMLDocument?
     

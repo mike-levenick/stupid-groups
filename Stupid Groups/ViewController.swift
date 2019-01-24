@@ -38,7 +38,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -49,7 +48,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
 
@@ -63,7 +62,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
 
         // Gather data on the smart group to be converted
         DispatchQueue.main.async {
-            let myURL = xmlBuilder().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
+            let myURL = prepareData().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
             let request = NSMutableURLRequest(url: myURL)
             request.httpMethod = "GET"
             let configuration = URLSessionConfiguration.default
@@ -93,7 +92,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         print(httpResponse.description)
                     }
                 }
-            
+
                 if error != nil {
                     _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
                 }
@@ -106,88 +105,88 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     @IBAction func btnPOST(_ sender: Any) {
         
 
-            
-            // Async update the UI for the start of the run
-            DispatchQueue.main.async {
-                self.beginRunView()
-            }
-            
-            // Set the max concurrent ops to the selectable number
-            myOpQueue.maxConcurrentOperationCount = 1
-            
-            // Semaphore causes the op queue to wait for responses before sending a new request
-            let semaphore = DispatchSemaphore(value: 0)
 
-                // Add a PUT or POST request to the operation queue
-                myOpQueue.addOperation {
-                    
-                    self.myURL = xmlBuilder().createPOSTURL(url: self.globalServerURL!)
-                    
-                    let request = NSMutableURLRequest(url: self.myURL)
-                    request.httpMethod = "POST"
+        // Async update the UI for the start of the run
+        DispatchQueue.main.async {
+            self.beginRunView()
+        }
 
-                    let configuration = URLSessionConfiguration.default
-                    configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(self.globalServerCredentials!)", "Content-Type" : "application/json", "Accept" : "application/json"]
-                    let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
-                    let task = session.dataTask(with: request as URLRequest, completionHandler: {
-                        (data, response, error) -> Void in
-                        
-                        // If debug mode is enabled, print out the full data from the curl
-                        /*if let myData = String(data: data!, encoding: .utf8) {
-                            if self.globalDebug == "on" {
-                                // DO STUFF HERE IF DEBUG IS ON
-                            }
-                        }*/
-                        
-                        // If we got a response
-                        if let httpResponse = response as? HTTPURLResponse {
-                            
-                            // If that response is a success response
-                            if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299 {
-                                DispatchQueue.main.async {
-                                    // GOOD RESPONSE GOES HERE
-                                    print(httpResponse.statusCode)
-                                    
-                                }
-                            } else {
-                                // If that response is not a success response
-                                DispatchQueue.main.async {
-                                    // BAD RESPONSE GOES HERE
-                                    print(httpResponse.statusCode)
-                                    print(httpResponse.debugDescription)
-                                    if let myData = String(data: data!, encoding: .utf8) {
-                                        print(myData)
-                                    }
-                                    
-                                }
-                                    if httpResponse.statusCode == 409 {
-                                    // 409 SPECIFIC STUFF GOES HERE
-                                    }
-                                    // Update the progress bar
-                                }
-                            
-                            // Signal that the response was received
-                            semaphore.signal()
-                            DispatchQueue.main.async {
-                                // ASYNC UPDATES TO THE GUI GO HERE
+        // Set the max concurrent ops to the selectable number
+        myOpQueue.maxConcurrentOperationCount = 1
 
-                            }
+        // Semaphore causes the op queue to wait for responses before sending a new request
+        let semaphore = DispatchSemaphore(value: 0)
+
+        // Add a PUT or POST request to the operation queue
+        myOpQueue.addOperation {
+
+            self.myURL = xmlBuilder().createPOSTURL(url: self.globalServerURL!)
+
+            let request = NSMutableURLRequest(url: self.myURL)
+            request.httpMethod = "POST"
+
+            let configuration = URLSessionConfiguration.default
+            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(self.globalServerCredentials!)", "Content-Type" : "application/json", "Accept" : "application/json"]
+            let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error) -> Void in
+
+                // If debug mode is enabled, print out the full data from the curl
+                /*if let myData = String(data: data!, encoding: .utf8) {
+                 if self.globalDebug == "on" {
+                 // DO STUFF HERE IF DEBUG IS ON
+                 }
+                 }*/
+
+                // If we got a response
+                if let httpResponse = response as? HTTPURLResponse {
+
+                    // If that response is a success response
+                    if httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299 {
+                        DispatchQueue.main.async {
+                            // GOOD RESPONSE GOES HERE
+                            print(httpResponse.statusCode)
+
                         }
-                        // Log errors if received (we probably shouldn't ever end up needing this)
-                        if error != nil {
-                            _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error while uploading. \n\n \(error!.localizedDescription)")
+                    } else {
+                        // If that response is not a success response
+                        DispatchQueue.main.async {
+                            // BAD RESPONSE GOES HERE
+                            print(httpResponse.statusCode)
+                            print(httpResponse.debugDescription)
+                            if let myData = String(data: data!, encoding: .utf8) {
+                                print(myData)
+                            }
+
                         }
-                    })
-                    // Send the request and then wait for the semaphore signal
-                    task.resume()
-                    semaphore.wait()
-                    
-                    // If we're on the last row sent, update the UI to reset for another run
+                        if httpResponse.statusCode == 409 {
+                            // 409 SPECIFIC STUFF GOES HERE
+                        }
+                        // Update the progress bar
+                    }
+
+                    // Signal that the response was received
+                    semaphore.signal()
                     DispatchQueue.main.async {
-                        self.resetView()
+                        // ASYNC UPDATES TO THE GUI GO HERE
+
                     }
                 }
-    
+                // Log errors if received (we probably shouldn't ever end up needing this)
+                if error != nil {
+                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error while uploading. \n\n \(error!.localizedDescription)")
+                }
+            })
+            // Send the request and then wait for the semaphore signal
+            task.resume()
+            semaphore.wait()
+
+            // If we're on the last row sent, update the UI to reset for another run
+            DispatchQueue.main.async {
+                self.resetView()
+            }
+        }
+
     }
     
 
