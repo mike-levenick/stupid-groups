@@ -14,14 +14,15 @@ public class prepareData {
     var xml: XMLDocument?
 
     public func xmlROOT(deviceType: String) -> String {
-        var root = "none"
+        var xmlRoot = "none"
         if deviceType == "Mobile Device" {
-            root = "mobile_device_group"
+            xmlRoot = "mobile_device_group"
         } else if deviceType == "Computer" {
-            endpoint = "computer_group"
+            xmlRoot = "computer_group"
         } else {
-            endpoint = "user_group"
+            xmlRoot = "user_group"
         }
+        return xmlRoot
     }
     
 

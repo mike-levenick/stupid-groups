@@ -206,6 +206,10 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         print("SET RUN VIEW")
     }
     @IBAction func codeTest(_ sender: Any) {
+        
+        let getURL = prepareData().createGETURL(url: globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
+        let getResponse = API().get(getCredentials: globalServerCredentials, getURL: getURL)
+        print(getResponse)
     }
     
 }

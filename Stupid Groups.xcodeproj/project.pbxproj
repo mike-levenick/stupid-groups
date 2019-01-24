@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A958521F96FE20097DA99 /* xmlParse.swift */; };
+		F77F8D2921F9FA1F005C33EE /* apiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F8D2821F9FA1F005C33EE /* apiFunctions.swift */; };
 		F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10821F61129001F8492 /* AppDelegate.swift */; };
 		F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10A21F61129001F8492 /* ViewController.swift */; };
 		F7EAD10D21F6112A001F8492 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7EAD10C21F6112A001F8492 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		F75A958521F96FE20097DA99 /* xmlParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xmlParse.swift; sourceTree = "<group>"; };
+		F77F8D2821F9FA1F005C33EE /* apiFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiFunctions.swift; sourceTree = "<group>"; };
 		F7EAD10521F61129001F8492 /* Stupid Groups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stupid Groups.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EAD10821F61129001F8492 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7EAD10A21F61129001F8492 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				F7EAD13C21F64D28001F8492 /* Stupid Groups.entitlements */,
 				F7EAD10821F61129001F8492 /* AppDelegate.swift */,
 				F7EAD10A21F61129001F8492 /* ViewController.swift */,
+				F77F8D2821F9FA1F005C33EE /* apiFunctions.swift */,
 				F7EAD10C21F6112A001F8492 /* Assets.xcassets */,
 				F7EAD10E21F6112B001F8492 /* Main.storyboard */,
 				F7EAD13A21F64BFD001F8492 /* prepareData.swift */,
@@ -284,6 +287,7 @@
 				F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */,
 				F7EAD13921F63703001F8492 /* loginWindow.swift in Sources */,
 				F7EAD13B21F64BFD001F8492 /* prepareData.swift in Sources */,
+				F77F8D2921F9FA1F005C33EE /* apiFunctions.swift in Sources */,
 				F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */,
 				F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */,
 				F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */,
