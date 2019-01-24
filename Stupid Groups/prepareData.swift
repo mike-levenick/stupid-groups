@@ -13,6 +13,7 @@ public class prepareData {
     // Globally declaring the xml variable to allow the various functions to populate it
     var xml: XMLDocument?
 
+    // Returns an array
     public func deviceData(deviceType: String) -> Array<String> {
         var xmlData = ["nil","nil","nil"]
         if deviceType == "Mobile Device" {
@@ -23,6 +24,38 @@ public class prepareData {
             xmlData = ["user_group","users","user"]
         }
         return xmlData
+    }
+    
+    public func xmlToPost(newName: String, siteID: String, criteria: String, membership: String, conversionType: String, deviceRoot: String, devicePlural: String, deviceSingular: String) -> Data {
+        
+        var newXMLString = "nil"
+        
+        // Build XML for an Advanced Search conversion
+        if conversionType == "Advanced Search" {
+            newXMLString = """
+            <\(deviceRoot)>
+                <name>\(newName)</name>
+                <site><id>\(siteID)</id></site>
+                <criteria>\(criteria)</criteria>
+            </\(deviceRoot)>
+            """
+            print(newXMLString)
+        }
+
+        // Build XML for a Static Group conversion
+        if conversionType == "Static Group" {
+            newXMLString = """
+            <\(deviceRoot)>
+                <name>\(newName)</name>
+                <site>\(siteID)</site>
+                <\(devicePlural)>\(membership)</\(devicePlural)>
+            </\(deviceRoot)>
+            """
+            print(newXMLString)
+        }
+        
+        let myData: Data? = newXMLString.data(using: .utf8) // non-nil
+        return myData!
     }
     
     func parseXML(fullXMLString:String, startTag:String, endTag:String) -> String {

@@ -24,6 +24,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     var newName: String!
     var siteID: String!
     var smartGroupMembership: String!
+    var globalSmartGroupXML: String!
     
     // Set up operation queue for runs
     let myOpQueue = OperationQueue()
@@ -58,47 +59,30 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     }
 
     @IBAction func btnGET(_ sender: Any) {
-        // Set variables based on the record type for the smart group
-
-        // Gather data on the smart group to be converted
-        DispatchQueue.main.async {
-            let myURL = prepareData().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
-            let request = NSMutableURLRequest(url: myURL)
-            request.httpMethod = "GET"
-            let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "text/xml"]
-            let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
-            let task = session.dataTask(with: request as URLRequest, completionHandler: {
-                (data, response, error) -> Void in
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
-                        // GOOD RESPONSE from API
-                        let smartGroupXML = String(decoding: data!, as: UTF8.self)
-                        print(smartGroupXML)
-                        self.smartGroupCriteria = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
-                        self.smartGroupName = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "name>", endTag: "</name")
-                        self.newName = "SG Converted - \(String(describing: self.smartGroupName))"
-                        self.siteID = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "site>", endTag: "</site")
-                        self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "computers>", endTag: "</computers")
-                    } else {
-                        // Bad Response from API
-                        print(httpResponse.statusCode)
-                        print(httpResponse.description)
-                    }
-                }
-
-                if error != nil {
-                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "Stupid Groups received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
-                }
-            })
-            task.resume() // Kick off the actual GET here
-        }
+        // Prepare a URL to use for the GET call, based on device type and ID
+        let getURL = prepareData().createGETURL(url: globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
         
+        // Pass the URL and credentials into the function to get the response XML back
+        let smartGroupXML = API().get(getCredentials: globalServerCredentials, getURL: getURL)
+        print(smartGroupXML)
+        
+        // Parse the response XML to gather data needed for concatenation
+        self.smartGroupCriteria = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
+        self.smartGroupName = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "name>", endTag: "</name")
+        self.newName = "SG Converted - \(String(describing: self.smartGroupName!))"
+        self.siteID = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "site>", endTag: "</site")
+        self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "computers>", endTag: "</computers")
     }
     
     @IBAction func btnPOST(_ sender: Any) {
         
-
+        // 0 deviceData[0] will be endpoint,
+        let deviceData = prepareData().deviceData(deviceType: self.popDeviceType.titleOfSelectedItem!)
+        print(deviceData[0])
+        print(deviceData[1])
+        print(deviceData[2])
+        
+        
 
         // Async update the UI for the start of the run
         DispatchQueue.main.async {
@@ -118,9 +102,10 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
 
             let request = NSMutableURLRequest(url: self.myURL)
             request.httpMethod = "POST"
-
+            //request.httpBody = xmlToPost
             let configuration = URLSessionConfiguration.default
             configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(self.globalServerCredentials!)", "Content-Type" : "application/json", "Accept" : "application/json"]
+            
             let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
             let task = session.dataTask(with: request as URLRequest, completionHandler: {
                 (data, response, error) -> Void in
@@ -168,7 +153,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                 }
                 // Log errors if received (we probably shouldn't ever end up needing this)
                 if error != nil {
-                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error while uploading. \n\n \(error!.localizedDescription)")
+                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "Stupid Groups received a fatal error while uploading. \n\n \(error!.localizedDescription)")
                 }
             })
             // Send the request and then wait for the semaphore signal
@@ -206,15 +191,61 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     }
     
     @IBAction func codeTest(_ sender: Any) {
+        // Set variables based on the record type for the smart group
+        
+        // Gather data on the smart group to be converted
+        DispatchQueue.main.async {
+            let myURL = prepareData().createGETURL(url: self.globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
+            let request = NSMutableURLRequest(url: myURL)
+            request.httpMethod = "GET"
+            let configuration = URLSessionConfiguration.default
+            configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(String(describing: self.globalServerCredentials!))", "Content-Type" : "text/xml", "Accept" : "text/xml"]
+            let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error) -> Void in
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
+                        // GOOD RESPONSE from API
+                        let smartGroupXML = String(decoding: data!, as: UTF8.self)
+                        print(smartGroupXML)
+                        self.smartGroupCriteria = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
+                        self.smartGroupName = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "name>", endTag: "</name")
+                        self.newName = "SG Converted - \(String(describing: self.smartGroupName))"
+                        self.siteID = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "site>", endTag: "</site")
+                        self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "computers>", endTag: "</computers")
+                    } else {
+                        // Bad Response from API
+                        print(httpResponse.statusCode)
+                        print(httpResponse.description)
+                    }
+                }
+                
+                if error != nil {
+                    _ = popPrompt().generalWarning(question: "Fatal Error", text: "Stupid Groups received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
+                }
+            })
+            task.resume() // Kick off the actual GET here
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    @IBAction func btnPostTest(_ sender: Any) {
         let deviceData = prepareData().deviceData(deviceType: self.popDeviceType.titleOfSelectedItem!)
         print(deviceData[0])
         print(deviceData[1])
         print(deviceData[2])
-        let getURL = prepareData().createGETURL(url: globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
-        let getResponse = API().get(getCredentials: globalServerCredentials, getURL: getURL)
-        print(getResponse)
+        
+        let xmlToPost = prepareData().xmlToPost(newName: newName, siteID: siteID, criteria: smartGroupCriteria, membership: smartGroupMembership, conversionType: popConvertTo.titleOfSelectedItem!, deviceRoot: deviceData[0], devicePlural: deviceData[1], deviceSingular: deviceData[2])
+        
         
     }
-    
     
 }

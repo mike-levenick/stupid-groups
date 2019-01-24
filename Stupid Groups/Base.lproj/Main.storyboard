@@ -802,6 +802,17 @@ DQ
                                     <action selector="codeTest:" target="XfG-lQ-9wD" id="AQk-M6-bjL"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k4X-If-Hff">
+                                <rect key="frame" x="126" y="13" width="97" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Post Test" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8w9-Hd-cqI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="btnPostTest:" target="XfG-lQ-9wD" id="aIv-3y-U2e"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
