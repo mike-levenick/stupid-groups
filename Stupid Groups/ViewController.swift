@@ -66,12 +66,18 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         let smartGroupXML = API().get(getCredentials: globalServerCredentials, getURL: getURL)
         print(smartGroupXML)
         
+        let deviceData = prepareData().deviceData(deviceType: self.popDeviceType.titleOfSelectedItem!, conversionType: self.popConvertTo.titleOfSelectedItem!)
+        print(deviceData[0])
+        print(deviceData[1])
+        print(deviceData[2])
+        print(deviceData[3])
+        
         // Parse the response XML to gather data needed for concatenation
         self.smartGroupCriteria = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
         self.smartGroupName = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "name>", endTag: "</name")
         self.newName = "SG Converted - \(String(describing: self.smartGroupName!))"
         self.siteID = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "site>", endTag: "</site")
-        self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "computers>", endTag: "</computers")
+        self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "\(deviceData[1])>", endTag: "</\(deviceData[1])")
     }
     
     @IBAction func btnPOST(_ sender: Any) {
