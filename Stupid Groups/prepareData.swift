@@ -25,7 +25,18 @@ public class prepareData {
         return xmlRoot
     }
     
-
+    func parseXML(fullXMLString:String, startTag:String, endTag:String) -> String {
+        var rawValue = ""
+        if let start = fullXMLString.range(of: startTag),
+            let end  = fullXMLString.range(of: endTag, range: start.upperBound..<fullXMLString.endIndex) {
+            rawValue.append(String(fullXMLString[start.upperBound..<end.lowerBound]))
+        } else {
+            // DEBUG HERE
+            
+            //if self.debug { self.writeToLog(stringOfText: "[tagValue2] Start, \(startTag), and end, \(endTag), not found.\n") }
+        }
+        return rawValue
+    }
 
     // Create the URL for generic updates, such as asset tag and username
     public func createPUTURL(url: String, endpoint: String, idType: String, columnA: String) -> URL {

@@ -59,7 +59,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
 
     @IBAction func btnGET(_ sender: Any) {
         // Set variables based on the record type for the smart group
-        
 
         // Gather data on the smart group to be converted
         DispatchQueue.main.async {
@@ -76,11 +75,11 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         // GOOD RESPONSE from API
                         let smartGroupXML = String(decoding: data!, as: UTF8.self)
                         print(smartGroupXML)
-                        self.smartGroupCriteria = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
-                        self.smartGroupName = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "name>", endTag: "</name")
+                        self.smartGroupCriteria = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
+                        self.smartGroupName = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "name>", endTag: "</name")
                         self.newName = "SG Converted - \(String(describing: self.smartGroupName))"
-                        self.siteID = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "site>", endTag: "</site")
-                        self.smartGroupMembership = xmlParse().getValueBetween(xmlString: smartGroupXML, startTag: "computers>", endTag: "</computers")
+                        self.siteID = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "site>", endTag: "</site")
+                        self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "computers>", endTag: "</computers")
                     } else {
                         // Bad Response from API
                         print(httpResponse.statusCode)

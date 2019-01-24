@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A958521F96FE20097DA99 /* xmlParse.swift */; };
 		F77F8D2921F9FA1F005C33EE /* apiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77F8D2821F9FA1F005C33EE /* apiFunctions.swift */; };
 		F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10821F61129001F8492 /* AppDelegate.swift */; };
 		F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10A21F61129001F8492 /* ViewController.swift */; };
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F75A958521F96FE20097DA99 /* xmlParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xmlParse.swift; sourceTree = "<group>"; };
 		F77F8D2821F9FA1F005C33EE /* apiFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiFunctions.swift; sourceTree = "<group>"; };
 		F7EAD10521F61129001F8492 /* Stupid Groups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stupid Groups.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EAD10821F61129001F8492 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 				F7EAD10C21F6112A001F8492 /* Assets.xcassets */,
 				F7EAD10E21F6112B001F8492 /* Main.storyboard */,
 				F7EAD13A21F64BFD001F8492 /* prepareData.swift */,
-				F75A958521F96FE20097DA99 /* xmlParse.swift */,
 				F7EAD11121F6112B001F8492 /* Info.plist */,
 				F7EAD11221F6112B001F8492 /* Stupid_Groups.entitlements */,
 				F7EAD13621F6351C001F8492 /* popPrompt.swift */,
@@ -290,7 +287,6 @@
 				F77F8D2921F9FA1F005C33EE /* apiFunctions.swift in Sources */,
 				F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */,
 				F7EAD13721F6351C001F8492 /* popPrompt.swift in Sources */,
-				F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
