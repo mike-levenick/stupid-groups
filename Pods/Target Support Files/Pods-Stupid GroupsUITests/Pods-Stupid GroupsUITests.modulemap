@@ -1,6 +1,0 @@
-framework module Pods_Stupid_GroupsUITests {
-  umbrella header "Pods-Stupid GroupsUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

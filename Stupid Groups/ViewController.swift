@@ -7,15 +7,12 @@
 //
 
 import Cocoa
-import SwiftyJSON
-import SwiftyXMLParser
 
 class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     
     // Declare Variables
     var globalServerURL: String!
     var globalServerCredentials: String!
-    var globalJSONtoPOST: JSON!
     var base64Credentials: String!
     var serverURL: String!
     var verified = false
@@ -90,11 +87,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                         //print("Site ID \(siteID)")
                         //print("Name \(name)")
                         
-                        
-                        
-                        
-                        
-                        
                     } else {
                         // Bad Response from API
                         print(httpResponse.statusCode)
@@ -133,12 +125,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                     
                     let request = NSMutableURLRequest(url: self.myURL)
                     request.httpMethod = "POST"
-                    do {
-                        request.httpBody = try self.globalJSONtoPOST!.rawData()
-                    } catch {
-                        //errors caught here
-                    }
-                    
+
                     let configuration = URLSessionConfiguration.default
                     configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(self.globalServerCredentials!)", "Content-Type" : "application/json", "Accept" : "application/json"]
                     let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
@@ -170,13 +157,6 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
                                     print(httpResponse.debugDescription)
                                     if let myData = String(data: data!, encoding: .utf8) {
                                         print(myData)
-                                    }
-                                    do {
-                                        if let postData = try String(data: self.globalJSONtoPOST!.rawData(), encoding: .utf8) {
-                                            print(postData)
-                                        }
-                                    } catch {
-                                        
                                     }
                                     
                                 }

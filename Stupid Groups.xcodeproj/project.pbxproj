@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6151A5D6A130875050AF2FA7 /* Pods_Stupid_GroupsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC818A8CAC2B36E50D90DCB /* Pods_Stupid_GroupsUITests.framework */; };
-		77DE895697EEFD616ECF999E /* Pods_Stupid_GroupsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5349757A7562B224359F2D /* Pods_Stupid_GroupsTests.framework */; };
-		CC37B7856D2607FB3F7E75AD /* Pods_Stupid_Groups.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2812CD671E49D51FBF7F25B /* Pods_Stupid_Groups.framework */; };
-		F72D65F921F7AE0B0063255E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72D65F821F7AE0B0063255E /* SwiftyJSON.framework */; };
 		F75A958621F96FE20097DA99 /* xmlParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75A958521F96FE20097DA99 /* xmlParse.swift */; };
 		F7EAD10921F61129001F8492 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10821F61129001F8492 /* AppDelegate.swift */; };
 		F7EAD10B21F61129001F8492 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAD10A21F61129001F8492 /* ViewController.swift */; };
@@ -41,16 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20414D67AFC104EFB85354EE /* Pods-Stupid GroupsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid GroupsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid GroupsTests/Pods-Stupid GroupsTests.release.xcconfig"; sourceTree = "<group>"; };
-		4A1C5BD4C648B0E2735448BF /* Pods-Stupid GroupsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid GroupsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid GroupsUITests/Pods-Stupid GroupsUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		CE5349757A7562B224359F2D /* Pods_Stupid_GroupsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stupid_GroupsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6D80A8B8FD45DDC2C31DCE3 /* Pods-Stupid GroupsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid GroupsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid GroupsUITests/Pods-Stupid GroupsUITests.release.xcconfig"; sourceTree = "<group>"; };
-		DB032A8A77B04F1E86D5C2D7 /* Pods-Stupid Groups.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid Groups.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid Groups/Pods-Stupid Groups.debug.xcconfig"; sourceTree = "<group>"; };
-		DDC818A8CAC2B36E50D90DCB /* Pods_Stupid_GroupsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stupid_GroupsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE68FC45A64B96692FB0BB1B /* Pods-Stupid Groups.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid Groups.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid Groups/Pods-Stupid Groups.release.xcconfig"; sourceTree = "<group>"; };
-		F26C380F9F9569A8FA108738 /* Pods-Stupid GroupsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stupid GroupsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stupid GroupsTests/Pods-Stupid GroupsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F2812CD671E49D51FBF7F25B /* Pods_Stupid_Groups.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stupid_Groups.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F72D65F821F7AE0B0063255E /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75A958521F96FE20097DA99 /* xmlParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xmlParse.swift; sourceTree = "<group>"; };
 		F7EAD10521F61129001F8492 /* Stupid Groups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stupid Groups.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EAD10821F61129001F8492 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,8 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F72D65F921F7AE0B0063255E /* SwiftyJSON.framework in Frameworks */,
-				CC37B7856D2607FB3F7E75AD /* Pods_Stupid_Groups.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77DE895697EEFD616ECF999E /* Pods_Stupid_GroupsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,33 +76,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6151A5D6A130875050AF2FA7 /* Pods_Stupid_GroupsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33FB7EB6017FDCBF9B1B60AE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DB032A8A77B04F1E86D5C2D7 /* Pods-Stupid Groups.debug.xcconfig */,
-				EE68FC45A64B96692FB0BB1B /* Pods-Stupid Groups.release.xcconfig */,
-				F26C380F9F9569A8FA108738 /* Pods-Stupid GroupsTests.debug.xcconfig */,
-				20414D67AFC104EFB85354EE /* Pods-Stupid GroupsTests.release.xcconfig */,
-				4A1C5BD4C648B0E2735448BF /* Pods-Stupid GroupsUITests.debug.xcconfig */,
-				D6D80A8B8FD45DDC2C31DCE3 /* Pods-Stupid GroupsUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		3CAE7773ED3827AE9430ECF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F72D65F821F7AE0B0063255E /* SwiftyJSON.framework */,
-				F2812CD671E49D51FBF7F25B /* Pods_Stupid_Groups.framework */,
-				CE5349757A7562B224359F2D /* Pods_Stupid_GroupsTests.framework */,
-				DDC818A8CAC2B36E50D90DCB /* Pods_Stupid_GroupsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,7 +96,6 @@
 				F7EAD11A21F6112B001F8492 /* Stupid GroupsTests */,
 				F7EAD12521F6112B001F8492 /* Stupid GroupsUITests */,
 				F7EAD10621F61129001F8492 /* Products */,
-				33FB7EB6017FDCBF9B1B60AE /* Pods */,
 				3CAE7773ED3827AE9430ECF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -189,11 +153,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7EAD12B21F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid Groups" */;
 			buildPhases = (
-				F3C8D7F23A45CCCDF8A26D8D /* [CP] Check Pods Manifest.lock */,
 				F7EAD10121F61129001F8492 /* Sources */,
 				F7EAD10221F61129001F8492 /* Frameworks */,
 				F7EAD10321F61129001F8492 /* Resources */,
-				7B3A5B3F6E63BBD71CF4A6DF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,7 +170,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7EAD12E21F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid GroupsTests" */;
 			buildPhases = (
-				47131352DC1848DA0D27552D /* [CP] Check Pods Manifest.lock */,
 				F7EAD11321F6112B001F8492 /* Sources */,
 				F7EAD11421F6112B001F8492 /* Frameworks */,
 				F7EAD11521F6112B001F8492 /* Resources */,
@@ -227,7 +188,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7EAD13121F6112B001F8492 /* Build configuration list for PBXNativeTarget "Stupid GroupsUITests" */;
 			buildPhases = (
-				5BB6EB4179A714C17A971C46 /* [CP] Check Pods Manifest.lock */,
 				F7EAD11E21F6112B001F8492 /* Sources */,
 				F7EAD11F21F6112B001F8492 /* Frameworks */,
 				F7EAD12021F6112B001F8492 /* Resources */,
@@ -315,99 +275,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		47131352DC1848DA0D27552D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Stupid GroupsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5BB6EB4179A714C17A971C46 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Stupid GroupsUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B3A5B3F6E63BBD71CF4A6DF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Stupid Groups/Pods-Stupid Groups-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stupid Groups/Pods-Stupid Groups-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3C8D7F23A45CCCDF8A26D8D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Stupid Groups-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F7EAD10121F61129001F8492 /* Sources */ = {
@@ -583,7 +450,6 @@
 		};
 		F7EAD12C21F6112B001F8492 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB032A8A77B04F1E86D5C2D7 /* Pods-Stupid Groups.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid Groups.entitlements";
@@ -606,7 +472,6 @@
 		};
 		F7EAD12D21F6112B001F8492 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE68FC45A64B96692FB0BB1B /* Pods-Stupid Groups.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Stupid Groups/Stupid Groups.entitlements";
@@ -629,7 +494,6 @@
 		};
 		F7EAD12F21F6112B001F8492 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F26C380F9F9569A8FA108738 /* Pods-Stupid GroupsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -651,7 +515,6 @@
 		};
 		F7EAD13021F6112B001F8492 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20414D67AFC104EFB85354EE /* Pods-Stupid GroupsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -673,7 +536,6 @@
 		};
 		F7EAD13221F6112B001F8492 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A1C5BD4C648B0E2735448BF /* Pods-Stupid GroupsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -694,7 +556,6 @@
 		};
 		F7EAD13321F6112B001F8492 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6D80A8B8FD45DDC2C31DCE3 /* Pods-Stupid GroupsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
