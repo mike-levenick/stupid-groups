@@ -185,5 +185,15 @@ class loginWindow: NSViewController, URLSessionDelegate {
         self.dismiss(self)
         NSApplication.shared.terminate(self)
     }
+    // Clear stored values such as username and URL
+    @IBAction func btnClearStored(_ sender: AnyObject) {
+        //Clear all stored values
+        txtURLOutlet.stringValue = ""
+        txtUserOutlet.stringValue = ""
+        txtPassOutlet.stringValue = ""
+        if let bundle = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundle)
+        }
+    }
 }
 

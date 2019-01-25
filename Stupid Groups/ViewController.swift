@@ -104,6 +104,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     
     @IBAction func btnPOST(_ sender: Any) {
         clearLog()
+        notReadyToRun()
         let deviceData = prepareData().deviceData(deviceType: self.popDeviceType.titleOfSelectedItem!, conversionType: self.popConvertTo.titleOfSelectedItem!)
         
         let xmlToPost = prepareData().xmlToPost(newName: newName, siteID: siteID, criteria: smartGroupCriteria, membership: smartGroupMembership, conversionType: popConvertTo.titleOfSelectedItem!, deviceRoot: deviceData[0], devicePlural: deviceData[1], deviceSingular: deviceData[2])
@@ -200,4 +201,17 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 14.0)!,
         NSAttributedString.Key.foregroundColor: NSColor(deviceRed: 0.8, green: 0.0, blue: 0.0, alpha: 1.0)
     ]
+
+    // These actions are to reset the pre-flight button with the notreadytorun() function
+    // If something changes such as group ID or group type/target type
+    @IBAction func popGroupType(_ sender: Any) {
+        notReadyToRun()
+    }
+    @IBAction func popConvertTo(_ sender: Any) {
+        notReadyToRun()
+    }
+    @IBAction func txtIDAction(_ sender: Any) {
+        notReadyToRun()
+    }
+
 }
