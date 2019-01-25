@@ -117,7 +117,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "Your group was converted to \(popConvertTo.titleOfSelectedItem!), with a name of \(newName ?? "nil") and an ID of \(newID).")
         } else if postResponse.contains("Error: Duplicate name"){
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "ERROR: Duplicate. ")
-            printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "It appears that a \(popConvertTo.titleOfSelectedItem!) with a name of\n\"\(newName ?? "nil")\" already exists.\n\nIf you have a clustered environment, or JamfCloud, it may take a few minutes for the group to appear in your web GUI after conversion.\n\nIf you would like to replace the old \(popConvertTo.titleOfSelectedItem!), please manually delete it and try again.")
+            printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "It appears that a \(popConvertTo.titleOfSelectedItem!) with a name of \"\(newName ?? "nil")\" already exists.\n\nIf you have a clustered environment, or JamfCloud, it may take a few minutes for the group to appear in your web GUI after conversion.\n\nIf you would like to replace the old \(popConvertTo.titleOfSelectedItem!), please manually delete it and try again.")
         } else {
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "ERROR: ")
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "An unspecified error has occured. Full API response below:\n\n")
@@ -189,14 +189,14 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     let myFontAttribute = [ NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 14.0)! ]
     let myHeaderAttribute = [ NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 20.0)! ]
     let myOKFontAttribute = [
-        NSAttributedString.Key.font: NSFont(name: "Courier", size: 14.0)!,
+        NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 14.0)!,
         NSAttributedString.Key.foregroundColor: NSColor(deviceRed: 0.0, green: 0.8, blue: 0.0, alpha: 1.0)
     ]
     let myFailFontAttribute = [
-        NSAttributedString.Key.font: NSFont(name: "Courier", size: 14.0)!,
+        NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 14.0)!,
         NSAttributedString.Key.foregroundColor: NSColor(deviceRed: 0.8, green: 0.0, blue: 0.0, alpha: 1.0)
     ]
-    let myCSVFontAttribute = [ NSAttributedString.Key.font: NSFont(name: "Courier", size: 14.0)! ]
+    let myCSVFontAttribute = [ NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 14.0)! ]
     let myAlertFontAttribute = [
         NSAttributedString.Key.font: NSFont(name: "Helvetica Neue Thin", size: 14.0)!,
         NSAttributedString.Key.foregroundColor: NSColor(deviceRed: 0.8, green: 0.0, blue: 0.0, alpha: 1.0)
