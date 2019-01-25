@@ -130,7 +130,7 @@ public class prepareData {
                 <display_fields>\(displayFields)</display_fields>
             </\(deviceRoot)>
             """
-            print(newXMLString)
+            //print(newXMLString) // Uncomment for debugging
         }
 
         // Build XML for a Static Group conversion
@@ -143,7 +143,7 @@ public class prepareData {
                 <\(devicePlural)>\(membership)</\(devicePlural)>
             </\(deviceRoot)>
             """
-            print(newXMLString)
+            //print(newXMLString) // Uncomment for debugging
         }
         
         let myData: Data? = newXMLString.data(using: .utf8) // non-nil
@@ -157,8 +157,6 @@ public class prepareData {
             rawValue.append(String(fullXMLString[start.upperBound..<end.lowerBound]))
         } else {
             // DEBUG HERE
-            
-            //if self.debug { self.writeToLog(stringOfText: "[tagValue2] Start, \(startTag), and end, \(endTag), not found.\n") }
         }
         return rawValue
     }

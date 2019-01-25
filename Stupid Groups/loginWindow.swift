@@ -37,7 +37,6 @@ class loginWindow: NSViewController, URLSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Restore the Username to text box if we have a default stored
         if loginDefaults.value(forKey: "UserName") != nil {
             txtUserOutlet.stringValue = loginDefaults.value(forKey: "UserName") as! String
@@ -53,16 +52,6 @@ class loginWindow: NSViewController, URLSessionDelegate {
                 self.txtPassOutlet.becomeFirstResponder()
             }
         }
-        
-        /*if loginDefaults.value(forKey: "Remember") != nil {
-            if loginDefaults.bool(forKey: "Remember") {
-                chkRememberMe.state = 1
-            } else {
-                chkRememberMe.state = 0
-            }
-        } else {
-            // Just in case you ever want to do something for no default stored
-        }*/
     }
     
     override func viewDidAppear() {
@@ -75,6 +64,7 @@ class loginWindow: NSViewController, URLSessionDelegate {
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
+
         txtURLOutlet.stringValue = txtURLOutlet.stringValue.trimmingCharacters(in: CharacterSet.whitespaces)
         txtUserOutlet.stringValue = txtUserOutlet.stringValue.trimmingCharacters(in: CharacterSet.whitespaces)
         txtPassOutlet.stringValue = txtPassOutlet.stringValue.trimmingCharacters(in: CharacterSet.whitespaces)
@@ -82,18 +72,21 @@ class loginWindow: NSViewController, URLSessionDelegate {
         // Warn the user if they have failed to enter an instancename AND prem URL
         if txtURLOutlet.stringValue == "" {
             _ = popPrompt().generalWarning(question: "No Server Info", text: "It appears that you have not entered any information for your Jamf Pro URL. Please enter either a Jamf Cloud instance name, or your full URL if you host your own server.")
+            NSLog("ERROR: No server info was entered. Setting doNotRun to 1")
             doNotRun = "1" // Set Do Not Run flag
         }
         
         // Warn the user if they have failed to enter a username
         if txtUserOutlet.stringValue == "" {
-            _ = popPrompt().generalWarning(question: "No Username Found", text: "It appears that you have not entered a username for MUT to use while accessing Jamf Pro. Please enter your username and password, and try again.")
+            _ = popPrompt().generalWarning(question: "No Username Found", text: "It appears that you have not entered a username for Stupid Groups to use while accessing Jamf Pro. Please enter your username and password, and try again.")
+            NSLog("ERROR: No user info was entered. Setting doNotRun to 1")
             doNotRun = "1" // Set Do Not Run flag
         }
         
         // Warn the user if they have failed to enter a password
         if txtPassOutlet.stringValue == "" {
-            _ = popPrompt().generalWarning(question: "No Password Found", text: "It appears that you have not entered a password for MUT to use while accessing Jamf Pro. Please enter your username and password, and try again.")
+            _ = popPrompt().generalWarning(question: "No Password Found", text: "It appears that you have not entered a password for Stupid Groups to use while accessing Jamf Pro. Please enter your username and password, and try again.")
+            NSLog("ERROR: No password info was entered. Setting doNotRun to 1")
             doNotRun = "1" // Set Do Not Run flag
         }
         
@@ -117,68 +110,49 @@ class loginWindow: NSViewController, URLSessionDelegate {
             base64Credentials = utf8Credentials?.base64EncodedString()
             
             // MARK - Credential Verification API Call
-            
-            DispatchQueue.main.async {
-                let myURL = prepareData().createAuthURL(url: self.serverURL!)
-                let request = NSMutableURLRequest(url: myURL)
-                request.httpMethod = "GET"
-                let configuration = URLSessionConfiguration.default
-                configuration.httpAdditionalHeaders = ["Authorization" : "Basic \(self.base64Credentials!)", "Content-Type" : "text/xml", "Accept" : "text/xml"]
-                let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.main)
-                let task = session.dataTask(with: request as URLRequest, completionHandler: {
-                    (data, response, error) -> Void in
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
-                            self.verified = true
-                            
-                            // Store username if button pressed
-                            if self.chkRememberMe.state.rawValue == 1 {
-                                self.loginDefaults.set(self.txtUserOutlet.stringValue, forKey: "UserName")
-                                self.loginDefaults.set(self.txtURLOutlet.stringValue, forKey: "InstanceURL")
-                                self.loginDefaults.set(true, forKey: "Remember")
-                                self.loginDefaults.synchronize()
-                                
-                            } else {
-                                self.loginDefaults.removeObject(forKey: "UserName")
-                                self.loginDefaults.removeObject(forKey: "InstanceURL")
-                                self.loginDefaults.set(false, forKey: "Remember")
-                                self.loginDefaults.synchronize()
-                            }
-                            self.spinProgress.stopAnimation(self)
-                            self.btnSubmitOutlet.isHidden = false
-                            
-                            // vvv FIX DELEGATE FOR PASSING CREDENTIALS FORWARD vvv
-                            if self.delegateAuth != nil {
-                                self.delegateAuth?.userDidAuthenticate(base64Credentials: self.base64Credentials!, url: self.serverURL!)
-                                self.dismiss(self)
-                                print("DISMISS")
-                            }
-                            // ^^^ FIX DELEGATE FOR PASSING CREDENTIALS FORWARD ^^^
-                            
-                        } else {
-                            DispatchQueue.main.async {
-                                self.spinProgress.stopAnimation(self)
-                                self.btnSubmitOutlet.isHidden = false
-                                _ = popPrompt().generalWarning(question: "Invalid Credentials", text: "The credentials you entered do not seem to have sufficient permissions. This could be due to an incorrect user/password, or possibly from insufficient permissions. MUT tests this against the user's ability to view the Activation Code via the API.")
-                                if self.chkBypass.state.rawValue == 1 {
-                                    if self.delegateAuth != nil {
-                                        self.delegateAuth?.userDidAuthenticate(base64Credentials: self.base64Credentials!, url: self.serverURL!)
-                                        self.dismiss(self)
-                                    }
-                                    self.verified = true
-                                }
-                            }
+
+            let testURL = prepareData().createAuthURL(url: self.serverURL!)
+            let authResponse = API().get(getCredentials: self.base64Credentials!, getURL: testURL)
+            print(authResponse)
+
+            if authResponse.contains("<activation_code><organization_name>") {
+                NSLog("INFO: Successful authentication attempt.")
+                self.verified = true
+                // Store username if button pressed
+                if self.chkRememberMe.state.rawValue == 1 {
+                    self.loginDefaults.set(self.txtUserOutlet.stringValue, forKey: "UserName")
+                    self.loginDefaults.set(self.txtURLOutlet.stringValue, forKey: "InstanceURL")
+                    self.loginDefaults.set(true, forKey: "Remember")
+                    self.loginDefaults.synchronize()
+
+                } else {
+                    self.loginDefaults.removeObject(forKey: "UserName")
+                    self.loginDefaults.removeObject(forKey: "InstanceURL")
+                    self.loginDefaults.set(false, forKey: "Remember")
+                    self.loginDefaults.synchronize()
+                }
+                self.spinProgress.stopAnimation(self)
+                self.btnSubmitOutlet.isHidden = false
+
+                if self.delegateAuth != nil {
+                    self.delegateAuth?.userDidAuthenticate(base64Credentials: self.base64Credentials!, url: self.serverURL!)
+                    self.dismiss(self)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.spinProgress.stopAnimation(self)
+                    self.btnSubmitOutlet.isHidden = false
+                    _ = popPrompt().generalWarning(question: "Invalid Credentials", text: "The credentials you entered do not seem to have sufficient permissions. This could be due to an incorrect user/password, or possibly from insufficient permissions. Stupid Groups tests this against the user's ability to view the Activation Code via the API.")
+                    NSLog("INFO: Invalid authentication attempt.")
+                    if self.chkBypass.state.rawValue == 1 {
+                        if self.delegateAuth != nil {
+                            self.delegateAuth?.userDidAuthenticate(base64Credentials: self.base64Credentials!, url: self.serverURL!)
+                            self.dismiss(self)
                         }
+                        self.verified = true
                     }
-                    if error != nil {
-                        _ = popPrompt().generalWarning(question: "Fatal Error", text: "The MUT received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
-                        self.spinProgress.stopAnimation(self)
-                        self.btnSubmitOutlet.isHidden = false
-                    }
-                })
-                task.resume()
+                }
             }
- 
         } else {
             // Reset the Do Not Run flag so that on subsequent runs we try the checks again.
             doNotRun = "0"

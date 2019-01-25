@@ -13,7 +13,6 @@ public class API {
     public func get(getCredentials: String, getURL: URL) -> String {
         var stringToReturn = "nil"
         let semaphore = DispatchSemaphore(value: 0)
-        print("start get function")
         let request = NSMutableURLRequest(url: getURL)
         request.httpMethod = "GET"
         let configuration = URLSessionConfiguration.default
@@ -24,30 +23,30 @@ public class API {
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
                     // GOOD RESPONSE from API
-                    print(httpResponse.statusCode)
                     stringToReturn = String(decoding: data!, as: UTF8.self)
+                    NSLog("INFO: Successful GET completed by StupidGroups.app")
+                    NSLog(response?.description ?? "nil")
                 } else {
                     // Bad Response from API
-                    print(httpResponse.statusCode)
-                    print(httpResponse.description)
                     stringToReturn = String(decoding: data!, as: UTF8.self)
+                    NSLog("ERROR: Failed GET completed by StupidGroups.app")
+                    NSLog(response?.description ?? "nil")
                 }
-                semaphore.signal()
+                semaphore.signal() // Signal completion to the semaphore
             }
             
             if error != nil {
-                _ = popPrompt().generalWarning(question: "Fatal Error", text: "Stupid Groups received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
+                NSLog(error!.localizedDescription)
             }
         })
         task.resume() // Kick off the actual GET here
-        semaphore.wait()
+        semaphore.wait() // Wait for the semaphore before moving on to the return value
         return stringToReturn
     }
     
     public func post(postCredentials: String, postURL: URL, postBody: Data) -> String {
         var stringToReturn = "nil"
         let semaphore = DispatchSemaphore(value: 0)
-        print("start get function")
         let request = NSMutableURLRequest(url: postURL)
         request.httpMethod = "POST"
         request.httpBody = postBody
@@ -59,19 +58,21 @@ public class API {
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode >= 199 && httpResponse.statusCode <= 299 {
                     // GOOD RESPONSE from API
-                    print(httpResponse.statusCode)
                     stringToReturn = String(decoding: data!, as: UTF8.self)
+                    NSLog("INFO: Successful POST completed by StupidGroups.app")
+                    NSLog(response?.description ?? "nil")
                 } else {
                     // Bad Response from API
-                    print(httpResponse.statusCode)
-                    print(httpResponse.description)
                     stringToReturn = String(decoding: data!, as: UTF8.self)
+                    NSLog("ERROR: Failed POST completed by StupidGroups.app")
+                    NSLog(response?.description ?? "nil")
                 }
                 semaphore.signal()
             }
             
             if error != nil {
-                _ = popPrompt().generalWarning(question: "Fatal Error", text: "Stupid Groups received a fatal error at authentication. The most common cause of this is an incorrect server URL. The full error output is below. \n\n \(error!.localizedDescription)")
+                NSLog("FATAL: StupidGroups.app has encountered a fatal error.")
+                NSLog(error!.localizedDescription)
             }
         })
         task.resume() // Kick off the actual GET here
