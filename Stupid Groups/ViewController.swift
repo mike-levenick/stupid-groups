@@ -74,6 +74,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         // Clear the box on the main view controller, and then print some information.
         clearLog()
         printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "Gathering data about \(popDeviceType.titleOfSelectedItem!) group number \(txtGroupID.stringValue)...\n")
+        NSLog("[INFO  ]: Starting GET function.")
         // Prepare a URL to use for the GET call, based on device type and ID
         let getURL = prepareData().createGETURL(url: globalServerURL, deviceType: self.popDeviceType.titleOfSelectedItem!, id: self.txtGroupID.stringValue)
         
@@ -99,12 +100,14 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "It seems an error has occured. ")
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "The data gathered by Stupid Groups does not appear to match any existing group. Please try again.")
         }
-        NSLog("[INFO  ]: " + smartGroupXML)
+        NSLog("[INFO  ]: GET function returned: " + smartGroupXML)
     }
     
     @IBAction func btnPOST(_ sender: Any) {
         clearLog()
+        printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "Submitting data to create new \(popConvertTo.titleOfSelectedItem!) named \(newName ?? "nil")...\n")
         notReadyToRun()
+        NSLog("[INFO  ]: Starting POST function.")
         let deviceData = prepareData().deviceData(deviceType: self.popDeviceType.titleOfSelectedItem!, conversionType: self.popConvertTo.titleOfSelectedItem!)
         
         let xmlToPost = prepareData().xmlToPost(newName: newName, siteID: siteID, criteria: smartGroupCriteria, membership: smartGroupMembership, conversionType: popConvertTo.titleOfSelectedItem!, deviceRoot: deviceData[0], devicePlural: deviceData[1], deviceSingular: deviceData[2])
@@ -112,18 +115,23 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         let postResponse = API().post(postCredentials: globalServerCredentials, postURL: postURL, postBody: xmlToPost)
 
         if postResponse.contains("<id>"){
+            DispatchQueue.main.async {
+                self.clearLog()
             let newID = prepareData().parseXML(fullXMLString: postResponse, startTag: "id>", endTag: "</id")
-            printString(header: false, error: false, green: true, fixedPoint: false, lineBreakAfter: false, message: "Success! ")
-            printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "Your group was converted to \(popConvertTo.titleOfSelectedItem!), with a name of \(newName ?? "nil") and an ID of \(newID).")
+            self.printString(header: false, error: false, green: true, fixedPoint: false, lineBreakAfter: false, message: "Success! ")
+            self.printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "Your group was converted to \(self.popConvertTo.titleOfSelectedItem!), with a name of \(self.newName ?? "nil") and an ID of \(newID).")
+            }
         } else if postResponse.contains("Error: Duplicate name"){
+            clearLog()
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "ERROR: Duplicate. ")
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "It appears that a \(popConvertTo.titleOfSelectedItem!) with a name of \"\(newName ?? "nil")\" already exists.\n\nIf you have a clustered environment, or JamfCloud, it may take a few minutes for the group to appear in your web GUI after conversion.\n\nIf you would like to replace the old \(popConvertTo.titleOfSelectedItem!), please manually delete it and try again.")
         } else {
+            clearLog()
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "ERROR: ")
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "An unspecified error has occured. Full API response below:\n\n")
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: postResponse)
         }
-        NSLog("[INFO  ]: " + postResponse)
+        NSLog("[INFO  ]: POST function returned: " + postResponse)
     }
 
     // This function is required to allow the login window to pass
