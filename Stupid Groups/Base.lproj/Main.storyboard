@@ -534,16 +534,16 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6h-Cj-9yT">
-                                            <rect key="frame" x="38" y="305" width="307" height="42"/>
+                                            <rect key="frame" x="38" y="305" width="307" height="55"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Stupid Groups" id="Ycq-wz-4yf">
-                                                <font key="font" size="35" name="HelveticaNeue-Light"/>
+                                                <font key="font" size="46" name="HelveticaNeue-Light"/>
                                                 <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjQ-Vl-zn3">
-                                            <rect key="frame" x="64" y="279" width="307" height="28"/>
+                                            <rect key="frame" x="91" y="281" width="307" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Make your groups less smart." id="SG1-yQ-FgG">
                                                 <font key="font" size="14" name="HelveticaNeue-LightItalic"/>
