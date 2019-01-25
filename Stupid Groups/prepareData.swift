@@ -37,10 +37,10 @@ public class prepareData {
         // Users
         } else {
             if conversionType == "Advanced Search" {
-                xmlData = ["advanced_computer_search","computers","computer","advancedcomputersearches"]
+                xmlData = ["advanced_user_search","users","user","advancedusersearches"]
             }
             if conversionType == "Static Group" {
-                xmlData = ["computer_group","computers","computer","computergroups"]
+                xmlData = ["user_group","users","user","usergroups"]
             }
         }
         return xmlData

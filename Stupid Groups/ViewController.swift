@@ -91,7 +91,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         let xmlToPost = prepareData().xmlToPost(newName: newName, siteID: siteID, criteria: smartGroupCriteria, membership: smartGroupMembership, conversionType: popConvertTo.titleOfSelectedItem!, deviceRoot: deviceData[0], devicePlural: deviceData[1], deviceSingular: deviceData[2])
         
         let postURL = prepareData().createPOSTURL(url: globalServerURL, endpoint: deviceData[3] )
-        
+        print(postURL.absoluteString)
         let postResponse = API().post(postCredentials: globalServerCredentials, postURL: postURL, postBody: xmlToPost)
         
         print(postResponse)
