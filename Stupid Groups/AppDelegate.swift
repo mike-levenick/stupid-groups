@@ -21,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // Causes app to be quit properly after last window closed
+    // This is required by Apple in order for the app to be on the app store.
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }

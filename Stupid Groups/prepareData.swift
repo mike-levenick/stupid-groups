@@ -10,14 +10,15 @@ import Cocoa
 import Foundation
 
 public class prepareData {
-    // Globally declaring the xml variable to allow the various functions to populate it
-    var xml: XMLDocument?
 
-    // Returns an array
+    // This function returns the data neededfor the API call. It returns XML data as well as endpoint
+    // and returns it in an array to be parsed later. Technically, I believe the "singular" one is not needed
+    // but I am leaving it in, in case it is needed down the road.
     public func deviceData(deviceType: String, conversionType: String) -> Array<String> {
-        var xmlData = ["nil","nil","nil"]
+        var xmlData = ["nil","nil","nil","nil"]
         
-        // Mobile Device
+        // Logic block to determine what data to send back:
+        // Mobile Devices
         if deviceType == "Mobile Device" {
             if conversionType == "Advanced Search" {
                 xmlData = ["advanced_mobile_device_search","mobile_devices","mobile_device","advancedmobiledevicesearches"]
@@ -34,6 +35,7 @@ public class prepareData {
             if conversionType == "Static Group" {
                 xmlData = ["computer_group","computers","computer","computergroups"]
             }
+
         // Users
         } else {
             if conversionType == "Advanced Search" {
@@ -45,12 +47,18 @@ public class prepareData {
         }
         return xmlData
     }
-    
+
+    // Generate the XML which will be sent to the API to generate the new object
+    // Pass in all data, and it will determine what is needed based on
+    // the conversion type
     public func xmlToPost(newName: String, siteID: String, criteria: String, membership: String, conversionType: String, deviceRoot: String, devicePlural: String, deviceSingular: String) -> Data {
         
         var newXMLString = "nil"
         var displayFields = "nil"
-        
+
+        // By default, new advanced searches made in Jamf Pro will only display
+        // the name of the object. These XML blocks are to add additional display
+        // fields to make the advanced searches more helpful by default.
         if devicePlural == "users" {
             displayFields = """
             <size>7</size>
@@ -130,7 +138,6 @@ public class prepareData {
                 <display_fields>\(displayFields)</display_fields>
             </\(deviceRoot)>
             """
-            //print(newXMLString) // Uncomment for debugging
         }
 
         // Build XML for a Static Group conversion
@@ -143,13 +150,15 @@ public class prepareData {
                 <\(devicePlural)>\(membership)</\(devicePlural)>
             </\(deviceRoot)>
             """
-            //print(newXMLString) // Uncomment for debugging
         }
-        
-        let myData: Data? = newXMLString.data(using: .utf8) // non-nil
+
+        // Convert the XML string to a data type and return it
+        let myData: Data? = newXMLString.data(using: .utf8)
         return myData!
     }
-    
+
+    // Leslie Helou wrote this sweet little function. It parses XML to gather
+    // a substring between two specified tags.
     func parseXML(fullXMLString:String, startTag:String, endTag:String) -> String {
         var rawValue = ""
         if let start = fullXMLString.range(of: startTag),
@@ -157,24 +166,17 @@ public class prepareData {
             rawValue.append(String(fullXMLString[start.upperBound..<end.lowerBound]))
         } else {
             // DEBUG HERE
+            NSLog("[ERROR ]: Error parsing XML")
+            NSLog("[ERROR ]: Start, \(startTag), and end, \(endTag), not found.\n")
         }
         return rawValue
-    }
-
-    // Create the URL for generic updates, such as asset tag and username
-    public func createPUTURL(url: String, endpoint: String, idType: String, columnA: String) -> URL {
-        let stringURL = "\(url)\(endpoint)/\(idType)/\(columnA)"
-        let urlwithPercentEscapes = stringURL.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
-        let encodedURL = NSURL(string: urlwithPercentEscapes!)
-        //print(urlwithPercentEscapes!) // Uncomment for debugging
-        return encodedURL! as URL
     }
     
     // Create the URL that is used to verify the credentials against reading activation code
     public func createAuthURL(url: String) -> URL {
         let stringURL = "\(url)activationcode"
         let encodedURL = NSURL(string: stringURL)
-        //print(urlwithPercentEscapes!) // Uncomment for debugging
+        NSLog("[INFO  ]: AUTH URL CREATED: " + stringURL)
         return encodedURL! as URL
     }
     
@@ -190,33 +192,16 @@ public class prepareData {
         }
         let stringURL = "\(url)\(endpoint)/id/\(id)"
         let encodedURL = NSURL(string: stringURL)
-        //print(urlwithPercentEscapes!) // Uncomment for debugging
+        NSLog("[INFO  ]: GET URL CREATED: " + stringURL)
         return encodedURL! as URL
     }
-    
+
+    // Create the URL that is used to create the new group or advanced search
     public func createPOSTURL(url: String, endpoint: String) -> URL {
         let stringURL = "\(url)\(endpoint)/id/0"
         let encodedURL = NSURL(string: stringURL)
-        //print(urlwithPercentEscapes!) // Uncomment for debugging
+        NSLog("[INFO  ]: POST URL CREATED: " + stringURL)
         return encodedURL! as URL
-    }
-    
-    // MARK: - XML Creation based on dropdowns
-    
-    public func createXML(popIdentifier: String, popDevice: String, popAttribute: String, eaID: String, columnB: String, columnA: String) -> Data {
-        var returnedXML: Data?
-        
-        // BUILD XML FOR GENERIC USER UPDATES
-        if 1==1 && 2==2 {
-            let root = XMLElement(name: "user")
-            let xml = XMLDocument(rootElement: root)
-            let value = XMLElement(name: "name", stringValue: "value")
-            root.addChild(value)
-            //print(xml.xmlString) // Uncomment for debugging
-            returnedXML = xml.xmlData
-        }
-        
-        return returnedXML!
     }
 }
 

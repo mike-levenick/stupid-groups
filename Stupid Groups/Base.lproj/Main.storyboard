@@ -735,15 +735,6 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-S0-mfJ">
-                                            <rect key="frame" x="16" y="297" width="210" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting..." id="51P-jw-fH8">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfi-HG-mKz">
                                             <rect key="frame" x="247" y="279" width="116" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -856,7 +847,6 @@ DQ
                     <connections>
                         <outlet property="btnGetOutlet" destination="jfi-HG-mKz" id="yTs-SU-GXs"/>
                         <outlet property="btnPostOutlet" destination="2o9-VY-57e" id="BxQ-E9-E8o"/>
-                        <outlet property="lblResults" destination="YQi-S0-mfJ" id="76c-tx-h90"/>
                         <outlet property="popConvertTo" destination="2Ed-ee-29k" id="1rT-yU-2U4"/>
                         <outlet property="popDeviceType" destination="3aL-Jj-uLH" id="YE9-kb-D70"/>
                         <outlet property="txtGroupID" destination="rjd-Vb-tWk" id="Zwp-Ke-K90"/>
