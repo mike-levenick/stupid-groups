@@ -401,7 +401,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" borderWidth="0.0" cornerRadius="5" title="LoginBox" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="G1N-QX-X6I">
-                                            <rect key="frame" x="32" y="36" width="319" height="201"/>
+                                            <rect key="frame" x="32" y="28" width="319" height="201"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" ambiguous="YES" id="hnG-04-iX6">
                                                 <rect key="frame" x="0.0" y="0.0" width="319" height="201"/>
@@ -547,7 +547,7 @@ Gw
                                             <color key="fillColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zs6-eX-2ek">
-                                            <rect key="frame" x="38" y="238" width="307" height="28"/>
+                                            <rect key="frame" x="38" y="230" width="307" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Enter your Jamf Pro credentials:" id="Ow3-lG-aKV">
                                                 <font key="font" size="18" name="HelveticaNeue-Light"/>
@@ -556,7 +556,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6h-Cj-9yT">
-                                            <rect key="frame" x="38" y="315" width="307" height="55"/>
+                                            <rect key="frame" x="38" y="310" width="307" height="55"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Stupid Groups" id="Ycq-wz-4yf">
                                                 <font key="font" size="46" name="HelveticaNeue-Light"/>
@@ -565,7 +565,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjQ-Vl-zn3">
-                                            <rect key="frame" x="91" y="291" width="307" height="28"/>
+                                            <rect key="frame" x="91" y="286" width="307" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Make your groups less smart." id="SG1-yQ-FgG">
                                                 <font key="font" size="14" name="HelveticaNeue-LightItalic"/>
