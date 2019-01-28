@@ -50,7 +50,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredContentSize = NSSize(width: 383, height: 420) // Limits resizing of the window
-        printString(header: true, error: false, green: false, fixedPoint: false, lineBreakAfter: true, message: "Welcome to Stupid Groups v1.0")
+        printString(header: true, error: false, green: false, fixedPoint: false, lineBreakAfter: true, message: "Welcome to Stupid Groups v1.1")
         printString(header: false, error: false, green: false, fixedPoint: false, lineBreakAfter: true, message: "\nSometimes your groups get too smart.\n\nStupid Groups is here to help.\n\nConvert groups that rarely change membership to Static Groups, and convert compliance reporting groups that aren't used for scoping to Advanced Searches.\n\nEnter your data above and run a Pre-Flight Check to begin.\n")
     }
 
@@ -126,6 +126,10 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             clearLog()
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "ERROR: Duplicate. ")
             printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "It appears that a \(popConvertTo.titleOfSelectedItem!) with a name of \"\(newName ?? "nil")\" already exists.\n\nIf you have a clustered environment, or JamfCloud, it may take a few minutes for the group to appear in your web GUI after conversion.\n\nIf you would like to replace the old \(popConvertTo.titleOfSelectedItem!), please manually delete it and try again.")
+        } else if postResponse.contains("[FATAL ]:") {
+            clearLog()
+            printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "FATAL: ")
+            printString(header: false, error: false, green: false, fixedPoint: true, lineBreakAfter: true, message: "Stupid Groups has encountered a fatal error. " + postResponse)
         } else {
             clearLog()
             printString(header: false, error: true, green: false, fixedPoint: false, lineBreakAfter: false, message: "ERROR: ")

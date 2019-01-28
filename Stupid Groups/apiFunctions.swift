@@ -87,8 +87,9 @@ public class API {
             }
             
             if error != nil {
-                NSLog("[FATAL ]: StupidGroups.app has encountered a fatal error.")
-                NSLog(error!.localizedDescription)
+                NSLog("[FATAL ]: " + error!.localizedDescription)
+                stringToReturn = String("[FATAL ]: " + error!.localizedDescription)
+                semaphore.signal()
             }
         })
         task.resume() // Kick off the actual GET here
