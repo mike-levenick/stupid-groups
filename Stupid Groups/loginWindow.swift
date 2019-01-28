@@ -147,6 +147,30 @@ class loginWindow: NSViewController, URLSessionDelegate {
                     self.delegateAuth?.userDidAuthenticate(base64Credentials: self.base64Credentials!, url: self.serverURL!)
                     self.dismiss(self)
                 }
+            } else if authResponse.contains("[FATAL ]:"){
+                // Display an error message if there was a fatal http error
+                DispatchQueue.main.async {
+                    self.spinProgress.stopAnimation(self)
+                    self.btnSubmitOutlet.isHidden = false
+                    if authResponse.contains("SSL error") {
+                        _ = popPrompt().generalWarning(question: "Fatal Error", text: "There was a fatal error upon authentication attempt. The error is: " + authResponse + "\n\nIf you are using a self-signed or built-in SSL certificate, try adding the certificate to your keychain, trusting it, and trying again.")
+                    } else {
+                        _ = popPrompt().generalWarning(question: "Fatal Error", text: "There was a fatal error upon authentication attempt. The error is: " + authResponse)
+                    }
+
+                    NSLog("[INFO  ]: Invalid authentication attempt.")
+
+                    // Pass forward credentials and dismiss view if the "bypass authentication"
+                    // checkbox is checked. This is used in security-conscious organizations
+                    // where some admins have minimal permissions, and cannot GET the activation code
+                    if self.chkBypass.state.rawValue == 1 {
+                        if self.delegateAuth != nil {
+                            self.delegateAuth?.userDidAuthenticate(base64Credentials: self.base64Credentials!, url: self.serverURL!)
+                            self.dismiss(self)
+                        }
+                        self.verified = true
+                    }
+                }
             } else {
 
                 // Display an error message if there is no activation_code tag found
