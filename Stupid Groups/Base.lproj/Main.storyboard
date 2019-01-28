@@ -352,7 +352,7 @@ DQ
                                             </connections>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-IO-QJl">
-                                            <rect key="frame" x="188" y="316" width="175" height="22"/>
+                                            <rect key="frame" x="188" y="317" width="175" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="SG Converted - " drawsBackground="YES" id="7iA-LX-uhh">
                                                 <font key="font" metaFont="system"/>

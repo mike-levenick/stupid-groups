@@ -223,7 +223,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         notReadyToRun()
     }
     @IBAction func txtPrefixAction(_ sender: Any) {
-        notReadyToRun()
+        notReadyToRun() 
     }
 
 }
