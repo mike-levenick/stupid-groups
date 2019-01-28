@@ -26,6 +26,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     var siteID: String!
     var smartGroupMembership: String!
     var globalSmartGroupXML: String!
+    @IBOutlet weak var txtPrefix: NSTextField!
 
 
     // Declare outlets for use in the view
@@ -48,7 +49,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
     // Print some welcome messaging upon loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
-        preferredContentSize = NSSize(width: 383, height: 400) // Limits resizing of the window
+        preferredContentSize = NSSize(width: 383, height: 420) // Limits resizing of the window
         printString(header: true, error: false, green: false, fixedPoint: false, lineBreakAfter: true, message: "Welcome to Stupid Groups v1.0")
         printString(header: false, error: false, green: false, fixedPoint: false, lineBreakAfter: true, message: "\nSometimes your groups get too smart.\n\nStupid Groups is here to help.\n\nConvert groups that rarely change membership to Static Groups, and convert compliance reporting groups that aren't used for scoping to Advanced Searches.\n\nEnter your data above and run a Pre-Flight Check to begin.\n")
     }
@@ -90,7 +91,7 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
             // Parse the response XML to gather data needed for concatenation
             self.smartGroupCriteria = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "criteria>", endTag: "</criteria")
             self.smartGroupName = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "name>", endTag: "</name")
-            self.newName = "SG Converted - \(String(describing: self.smartGroupName!))"
+            self.newName = "\(txtPrefix.stringValue) \(String(describing: self.smartGroupName!))".replacingOccurrences(of: "  ", with: " ")
             self.siteID = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "site>", endTag: "</site")
             self.smartGroupMembership = prepareData().parseXML(fullXMLString: smartGroupXML, startTag: "\(deviceData[1])>", endTag: "</\(deviceData[1])")
             printString(header: false, error: false, green: true, fixedPoint: false, lineBreakAfter: false, message: "Group Found. ")
@@ -219,6 +220,9 @@ class ViewController: NSViewController, URLSessionDelegate, DataSentDelegate {
         notReadyToRun()
     }
     @IBAction func txtIDAction(_ sender: Any) {
+        notReadyToRun()
+    }
+    @IBAction func txtPrefixAction(_ sender: Any) {
         notReadyToRun()
     }
 

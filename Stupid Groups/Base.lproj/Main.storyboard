@@ -193,18 +193,18 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Stupid_Groups" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" appearanceType="aqua" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="383" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="420"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="JO8-YI-omo">
-                                <rect key="frame" x="0.0" y="0.0" width="383" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="383" height="420"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" ambiguous="YES" id="h4u-9P-GxS">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="400"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A1e-lS-k6u">
-                                            <rect key="frame" x="18" y="354" width="278" height="26"/>
+                                            <rect key="frame" x="18" y="379" width="278" height="26"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Type of smart group:" id="tWx-gA-xSx">
                                                 <font key="font" size="16" name="HelveticaNeue-Light"/>
@@ -213,7 +213,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7a-lV-w2f">
-                                            <rect key="frame" x="18" y="322" width="278" height="26"/>
+                                            <rect key="frame" x="18" y="347" width="278" height="26"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="What to convert it to:" id="XZ3-h8-LCe">
                                                 <font key="font" size="16" name="HelveticaNeue-Light"/>
@@ -221,8 +221,17 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BlE-nE-rOy">
+                                            <rect key="frame" x="18" y="315" width="278" height="26"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Prefix to prepend:" id="Hs3-m9-uQn">
+                                                <font key="font" size="16" name="HelveticaNeue-Light"/>
+                                                <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8T-ty-y7g">
-                                            <rect key="frame" x="18" y="288" width="278" height="26"/>
+                                            <rect key="frame" x="18" y="283" width="278" height="26"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="ID of the Smart Group:" id="dxG-8F-3AF">
                                                 <font key="font" size="16" name="HelveticaNeue-Light"/>
@@ -231,7 +240,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfi-HG-mKz">
-                                            <rect key="frame" x="247" y="289" width="116" height="23"/>
+                                            <rect key="frame" x="247" y="283" width="116" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundTextured" title="Pre-Flight Check" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aGj-Gc-71i">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -245,7 +254,7 @@ DQ
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3aL-Jj-uLH">
-                                            <rect key="frame" x="188" y="355" width="175" height="23"/>
+                                            <rect key="frame" x="188" y="379" width="175" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <popUpButtonCell key="cell" type="roundTextured" title="Computer" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="UPj-Lw-f5h" id="15x-tL-0ah">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -263,7 +272,7 @@ DQ
                                             </connections>
                                         </popUpButton>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ed-ee-29k">
-                                            <rect key="frame" x="188" y="323" width="175" height="23"/>
+                                            <rect key="frame" x="188" y="347" width="175" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <popUpButtonCell key="cell" type="roundTextured" title="Static Group" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="9Bt-A3-d0n" id="PI3-1R-IX3">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -320,7 +329,7 @@ DQ
                                             <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </box>
                                         <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2o9-VY-57e">
-                                            <rect key="frame" x="247" y="289" width="116" height="23"/>
+                                            <rect key="frame" x="247" y="283" width="116" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <buttonCell key="cell" type="roundTextured" title="Convert Group" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kj5-nd-L1f">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -331,7 +340,7 @@ DQ
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rjd-Vb-tWk">
-                                            <rect key="frame" x="188" y="290" width="51" height="22"/>
+                                            <rect key="frame" x="188" y="284" width="51" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="ID" drawsBackground="YES" id="6yK-tD-KSk">
                                                 <font key="font" metaFont="system"/>
@@ -340,6 +349,18 @@ DQ
                                             </textFieldCell>
                                             <connections>
                                                 <action selector="txtIDAction:" target="XfG-lQ-9wD" id="gJF-6q-2Ny"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-IO-QJl">
+                                            <rect key="frame" x="188" y="316" width="175" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="SG Converted - " drawsBackground="YES" id="7iA-LX-uhh">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="txtPrefixAction:" target="XfG-lQ-9wD" id="HqS-Jy-FcN"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -356,30 +377,31 @@ DQ
                         <outlet property="txtGroupID" destination="rjd-Vb-tWk" id="Zwp-Ke-K90"/>
                         <outlet property="txtMain" destination="hYW-yA-8Dy" id="Wel-ra-1Te"/>
                         <outlet property="txtMainWrapper" destination="uou-TU-j5d" id="eCe-FC-EOf"/>
+                        <outlet property="txtPrefix" destination="tZT-IO-QJl" id="fmJ-Ws-EFF"/>
                         <segue destination="mZ7-hY-i1Q" kind="sheet" identifier="segueLogin" id="NhQ-QB-War"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73.5" y="762"/>
+            <point key="canvasLocation" x="73.5" y="772"/>
         </scene>
         <!--Login Window-->
         <scene sceneID="ANs-38-oEo">
             <objects>
                 <viewController id="mZ7-hY-i1Q" customClass="loginWindow" customModule="Stupid_Groups" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" appearanceType="aqua" id="Jda-Q7-Y0A">
-                        <rect key="frame" x="0.0" y="0.0" width="383" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="420"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box fixedFrame="YES" boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="c4i-jS-gzI">
-                                <rect key="frame" x="0.0" y="0.0" width="383" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="383" height="420"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" ambiguous="YES" id="Wr9-KZ-GZx">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="400"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" boxType="custom" borderType="line" borderWidth="0.0" cornerRadius="5" title="LoginBox" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="G1N-QX-X6I">
-                                            <rect key="frame" x="32" y="26" width="319" height="201"/>
+                                            <rect key="frame" x="32" y="36" width="319" height="201"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" ambiguous="YES" id="hnG-04-iX6">
                                                 <rect key="frame" x="0.0" y="0.0" width="319" height="201"/>
@@ -525,7 +547,7 @@ Gw
                                             <color key="fillColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zs6-eX-2ek">
-                                            <rect key="frame" x="38" y="228" width="307" height="28"/>
+                                            <rect key="frame" x="38" y="238" width="307" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Enter your Jamf Pro credentials:" id="Ow3-lG-aKV">
                                                 <font key="font" size="18" name="HelveticaNeue-Light"/>
@@ -534,7 +556,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6h-Cj-9yT">
-                                            <rect key="frame" x="38" y="305" width="307" height="55"/>
+                                            <rect key="frame" x="38" y="315" width="307" height="55"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Stupid Groups" id="Ycq-wz-4yf">
                                                 <font key="font" size="46" name="HelveticaNeue-Light"/>
@@ -543,7 +565,7 @@ Gw
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjQ-Vl-zn3">
-                                            <rect key="frame" x="91" y="281" width="307" height="28"/>
+                                            <rect key="frame" x="91" y="291" width="307" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Make your groups less smart." id="SG1-yQ-FgG">
                                                 <font key="font" size="14" name="HelveticaNeue-LightItalic"/>
@@ -569,7 +591,7 @@ Gw
                 </viewController>
                 <customObject id="GVN-nP-v2u" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554.5" y="762"/>
+            <point key="canvasLocation" x="554.5" y="772"/>
         </scene>
     </scenes>
     <resources>
